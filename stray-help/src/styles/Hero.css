@@ -1,0 +1,125 @@
+
+/* HERO SECTION */
+.hero {
+    width: 100%;
+    background: var(--bg-light);
+    padding: 8em 6em 2em 6em;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 5px 10px -5px hsl(0, 0%, 85%);
+    margin-bottom: 3px;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+    gap: 2rem;
+}
+
+/* LEFT TEXT */
+.hero-text {
+    flex: 1;
+}
+
+.hero-heading {
+    font-family: var(--font-logo);
+    font-size: 3rem;
+    color: var(--primary-orange-dark);
+    margin-bottom: 1.5rem;
+}
+
+.hero-subheading {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+/* CTA BUTTON */
+.hero-cta {
+    display: inline-block;
+    background: var(--primary-orange);
+    color: white;
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    transition: all 0.3s;
+}
+
+.hero-cta {
+    text-decoration: none;
+}
+
+.hero-cta:hover {
+    background: var(--primary-orange-dark);
+    transform: translateY(-1.6px);
+}
+
+/* RIGHT IMAGE */
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .hero-heading {
+        font-size: 2.5rem;
+    }
+    .hero-subheading {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .hero-text {
+        margin-top: 2rem;
+    }
+
+    .hero-heading {
+        font-size: 2rem;
+    }
+
+    .hero-subheading {
+        font-size: 1rem;
+    }
+
+    .hero-cta {
+        padding: 0.7rem 1.8rem;
+    }
+
+    .hero-image img {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-heading {
+        font-size: 1.8rem;
+    }
+    .hero-subheading {
+        font-size: 0.95rem;
+    }
+    .hero-cta {
+        padding: 0.6rem 1.5rem;
+    }
+    .hero-image img {
+        max-width: 250px;
+    }
+}

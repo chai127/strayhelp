@@ -1,0 +1,140 @@
+:root {
+  --primary-orange: hsl(33, 94%, 55%); /* soft pastel orange */
+  --primary-orange-dark: hsl(32, 94%, 59%);
+  --accent-green: #a8d5ba; /* pastel mint green */
+  --text-dark: #2c2c2c;
+  --bg-light: #fffaf5;
+  --font-logo: "Kranky", serif;
+}
+
+.kranky-regular {
+    font-family: "Kranky", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* 🌎 Reset & Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* 🧭 Global Section Style */
+section {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* 📱 Responsive Typography */
+h1, h2, h3 {
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.8rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+/* 🪶 Utility Classes */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  background: var(--primary-orange);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background: var(--primary-orange-dark);
+  transform: translateY(-2px);
+}
+
+/* 📱 Responsive Layout Adjustments */
+@media (max-width: 1024px) {
+  section {
+    padding: 5rem 1.8rem;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 4rem 1.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  .btn {
+    display: block;
+    margin: 1rem auto;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  section {
+    padding: 3rem 1.2rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+}
