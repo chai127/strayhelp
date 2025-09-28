@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./styles/App.css";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
-import Signup from "./components/Signup";
+import SignUp from "./components/SignUp";
 import Hero from "./components/Hero";
 import HowItWorks from "./components/HowItWorks";
 import About from "./components/About";
@@ -47,7 +47,7 @@ function App() {
       <Navbar setPage={setPage} />
 
       {page === "login" && <Login setPage={setPage} />}
-      {page === "signup" && <Signup setPage={setPage} />}
+      {page === "signup" && <SignUp setPage={setPage} />}
       {page === "main" && (
         <>
           <Hero setPage={setPage} />
