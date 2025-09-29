@@ -1,0 +1,184 @@
+/* ==================================== */
+/* TriageQueue.css */
+/* ==================================== */
+
+/* --- Custom Properties (Variables) --- */
+:root {
+/* Pastel-inspired background and surfaces */
+ --bg-light: #f9f9fb;    /* Very light, almost white background */
+  --surface-white: #ffffff;  /* Pure white for main container */
+  
+  /* Text Colors (Kept dark for readability) */
+  --text-dark: #4a637a;    /* Dark blue-gray for main text */
+  --text-light: #a9b9c9;   /* Light blue-gray for secondary text */
+  
+  /* Primary Highlight Color (Softer Orange) */
+  --primary-orange: #ffb86c; /* Pastel light orange */
+  
+  /* Severity Colors (Pastel versions) */
+  --severity-high: #ff9aa2;  /* Soft Coral/Pink for High */
+  --severity-medium: #ffd79a; /* Soft Gold/Peach for Medium */
+  --severity-low: #efed6d;  /* Soft Mint Green for Low */
+  
+  /* Hover Color (Very Light Blue) */
+  --hover-blue: #f2f7fe;
+}
+
+
+/* ------------------------------------ */
+/* --- Overall Container & Heading --- */
+/* ------------------------------------ */
+
+.triage-queue {
+  flex: 0 0 280px; 
+  padding: 15px;
+  background-color: var(--surface-white);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.triage-queue h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: var(--text-dark); 
+  font-size: 1.25rem;
+  /* Uses the softer pastel orange for the border */
+  border-bottom: 2px solid var(--primary-orange); 
+  padding-bottom: 8px;
+  font-weight: 600;
+}
+
+/* ------------------------------------ */
+/* --- List Wrapper --- */
+/* ------------------------------------ */
+
+.queue-list {
+  flex-grow: 1;
+}
+
+
+/* ------------------------------------ */
+/* --- Individual Item Styling --- */
+/* ------------------------------------ */
+
+.queue-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border-left: 5px solid transparent; 
+  background-color: var(--bg-light); /* Light item background */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.queue-item:hover {
+  background-color: var(--hover-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.queue-item:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ------------------------------------ */
+/* --- Severity Colors for Border (Now Pastel) --- */
+/* ------------------------------------ */
+
+.severity-high {
+  border-left-color: var(--severity-high);
+}
+
+.severity-medium {
+  border-left-color: var(--severity-medium);
+}
+
+.severity-low {
+  border-left-color: var(--severity-low);
+}
+
+/* ------------------------------------ */
+/* --- Information Section (Animal Name, ID, Location) --- */
+/* ------------------------------------ */
+
+.report-info {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+/* Main Heading: Animal Type */
+.report-info h4 {
+  margin: 0 0 4px 0;
+  font-size: 1rem;
+  color: var(--text-dark);
+  font-weight: 600; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Secondary Info: Case ID and Location */
+.report-info p {
+  margin: 0;
+  font-size: 0.8rem; 
+  color: var(--text-light); 
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Focus Style for Case ID */
+.report-info p strong {
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+
+/* ------------------------------------ */
+/* --- Metadata Section (Severity & Time) --- */
+/* ------------------------------------ */
+
+.report-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.severity-tag {
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  /* Use a dark color for the text on the pastel tag background for readability */
+  color: var(--text-dark); 
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Reduced shadow for a softer look */
+}
+
+.time-tag {
+  color: var(--text-light);
+  font-style: italic;
+}
+
+
+/* Severity Tag Colors (Backgrounds - Now Pastel) */
+.severity-high .severity-tag {
+  background-color: var(--severity-high);
+}
+
+.severity-medium .severity-tag {
+  background-color: var(--severity-medium);
+}
+
+.severity-low .severity-tag {
+  background-color: var(--severity-low);
+}
+

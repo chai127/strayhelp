@@ -1,0 +1,169 @@
+/* Sidebar.css */
+
+/* --- Sidebar Base Styles --- */
+.ngo-sidebar {
+    /* Set a consistent width to match the dashboard-main margin */
+    width: 250px; 
+    /* Make the sidebar fixed to the viewport when the main content scrolls */
+    position: fixed;
+    top: 60px; /* Aligns below the fixed NGONavbar (assumed 60px height) */
+    bottom: 0;
+    
+    /* Use the designated background color */
+    background-color: #fff; 
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 1.5rem;
+    
+    /* Use a softer border for separation */
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.03); /* Subtle inner shadow */
+    z-index: 10; /* Ensure it stays above main content */
+    overflow-y: auto; /* Allow vertical scrolling if content is too long */
+}
+
+/* --- Header --- */
+.sidebar-header {
+    text-align: center;
+    padding-bottom: 1.5rem; /* Reduced padding for cleaner look */
+    border-bottom: 1px solid var(--accent-green);
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-header h2 {
+    font-family: var(--font-logo);
+    color: var(--primary-orange); /* Using the main orange for prominence */
+    font-size: 2.2rem; /* Slightly larger logo text */
+    line-height: 1;
+    margin: 0; /* Remove default h2 margin */
+}
+
+.ngo-name {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    /* Make it slightly subdued */
+    opacity: 0.8; 
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+/* --- Navigation --- */
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-nav li a {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    border-radius: 8px;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li a.active {
+    background-color: var(--primary-orange);
+    color: #fff;
+    /* Use a subtle box shadow on hover instead of transform for a cleaner look */
+    box-shadow: 0 4px 8px rgba(248, 151, 32, 0.3);
+}
+
+.sidebar-nav .icon {
+    font-size: 1.3rem; /* Slightly larger icons */
+    margin-right: 1rem;
+}
+
+/* --- Footer --- */
+.sidebar-footer {
+    margin-top: auto;
+    text-align: center;
+    font-size: 0.75rem; /* Slightly smaller footer text */
+    color: var(--text-dark);
+    opacity: 0.7;
+    padding-top: 1rem;
+    border-top: 1px solid var(--accent-green);
+}
+
+/* --- Responsive Adjustments (Mobile/Tablet) --- */
+@media (max-width: 900px) {
+    /* When the screen is narrow, hide the fixed sidebar to allow main content space. */
+    /* You would typically use a hamburger menu to toggle this class: */
+    .ngo-sidebar {
+        /* Hide the default fixed sidebar */
+        display: none; 
+    }
+}
+
+
+/* Optional: If you still want a simplified, horizontal sidebar/navbar 
+    on mobile (768px and below), you would typically put this in the 
+    NGONavbar component instead of making the main sidebar collapse like this.
+
+    Since the original prompt requested this behavior, here's the code 
+    to switch the Sidebar to a horizontal bottom menu (less common for dashboards, 
+    but fulfils the request's logic):
+*/ 
+
+ @media (max-width: 768px) {
+    .ngo-sidebar {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        padding: 0.5rem 0;
+        border-right: none;
+        border-top: 1px solid var(--accent-green);
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+        z-index: 50; 
+        background-color: #fff;
+        display: block; 
+    }
+    
+    .sidebar-header,
+    .sidebar-footer {
+        display: none;
+    }
+    
+    .sidebar-nav ul {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 0;
+    }
+    
+    .sidebar-nav li {
+        text-align: center;
+        flex: 1; 
+    }
+    
+    .sidebar-nav li a {
+        flex-direction: column;
+        padding: 0.5rem 0.2rem;
+        margin: 0;
+        border-radius: 0;
+    }
+    
+    .sidebar-nav li a:hover,
+    .sidebar-nav li a.active {
+        background-color: transparent;
+        color: var(--primary-orange);
+        transform: none;
+        box-shadow: none;
+    }
+
+    .sidebar-nav .icon {
+        margin-right: 0;
+        margin-bottom: 4px;
+    }
+    .sidebar-nav li a span:last-child {
+        font-size: 0.7rem;
+    }
+}

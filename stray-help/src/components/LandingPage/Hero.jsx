@@ -1,6 +1,6 @@
 import React from "react";
-import "../styles/Hero.css";
-import dogImage from '../assets/doggo.png'; 
+import "../../styles/Hero.css";
+import dogImage from '../../assets/doggo.png'; 
 
 const Hero = ({ setPage }) => {
     return (

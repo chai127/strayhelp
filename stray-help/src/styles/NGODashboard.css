@@ -1,0 +1,135 @@
+/* NGODashboard.css */
+
+/* --- Custom Properties (For context) --- */
+/* Assuming these are defined in a global file/elsewhere */
+/* :root {
+    --text-dark: #34495e;
+    --primary-orange: #f39c12;
+} */
+
+
+/* --- Global Layout --- */
+.ngo-dashboard {
+    /* Set up the main container to be a column flex container */
+    display: flex;
+    flex-direction: column;
+    /* Use min-height: 100vh to ensure the dashboard always fills the screen vertically */
+    min-height: 100vh;
+    background-color: #f7f7f7; 
+}
+
+/* Wrapper for Sidebar and Main Content */
+.dashboard-content-wrapper {
+    display: flex;
+    flex-grow: 1;
+    padding-top: 60px; /* Space for the fixed NGONavbar */
+}
+
+/* --- Main Content Container (Handles Scroll for the entire right-side content) --- */
+.dashboard-main {
+    flex-grow: 1;
+    /* Space for the sidebar (assuming Sidebar is fixed/sticky and 250px wide) */
+    /* Removed margin-left: 250px; for cleaner handling of sidebar state (should be managed by a class toggle on a larger parent/conditional CSS) but keeping it for now if sidebar is always 250px fixed */
+    margin-left: 250px; 
+    padding: 30px;
+    /* **KEY FIX:** Allow the entire main section to scroll if content overflows */
+    overflow-y: auto; 
+    overflow-x: hidden;
+}
+
+/* --- Main Content Header --- */
+.dashboard-main h2 {
+    color: var(--text-dark);
+    margin-bottom: 25px; /* Increased margin for better separation */
+    font-weight: 700;
+    text-align: left; 
+    padding-left: 10px;
+    border-left: 4px solid var(--primary-orange);
+}
+
+/* --- TriageQueue and KanbanBoard Container (The Panels) --- */
+.dashboard-panels {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start; /* Aligns panels to the top, preventing vertical stretch issues */
+    margin-bottom: 30px; /* Add space at the bottom of the main content area */
+    height: auto; 
+    overflow-y: visible; /* Let the dashboard-main container handle the scroll */
+}
+
+/* Style for individual panels (TriageQueue, KanbanBoard, NEW Panels) */
+.dashboard-panels > * {
+    /* Both panels take up equal width */
+    flex: 1 1 50%; 
+    min-height: 400px; /* Good practice to ensure a minimum size */
+
+    /* Panel Styling - Common style applied to direct children of .dashboard-panels */
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow-y: visible; 
+}
+
+/* Specific adjustment for the panel containing the Volunteers component */
+.volunteer-panel-container {
+    /* The Volunteers component itself might not have padding, so this container ensures the panel style */
+    /* Note: Since .dashboard-panels > * already applies styling, this class is mainly for targeting the wrapper */
+    min-height: 300px; /* Smaller min-height for this section perhaps */
+}
+
+/* Specific styling for the placeholder panel */
+.empty-panel-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #95a5a6; /* Light gray text for placeholder */
+    font-style: italic;
+    border: 1px dashed #ecf0f1; /* Dashed border for visual distinction */
+    min-height: 300px; 
+}
+
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 1200px) {
+    .dashboard-panels {
+        flex-direction: column;
+        height: auto; 
+    }
+
+    /* Panels take full width when stacked */
+    .dashboard-panels > * {
+        flex: none;
+        width: 100%;
+        margin-bottom: 20px;
+        overflow-y: visible;
+    }
+    
+    /* Ensure the main area can scroll when panels stack (already set, but good for safety) */
+    .dashboard-main {
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 900px) {
+    /* Sidebar is hidden or collapses */
+    .dashboard-main {
+        margin-left: 0;
+        padding: 20px 15px;
+    }
+    
+    .dashboard-main h2 {
+        /* Revert to left align with a small margin on smaller screens for a less jarring look */
+        text-align: left;
+        padding-left: 0;
+        border-left: none;
+        border-bottom: 2px solid var(--primary-orange);
+        padding-bottom: 5px;
+        margin-left: 10px; /* Add some margin for the content */
+    }
+    
+    .dashboard-content-wrapper {
+        width: 100%;
+    }
+}

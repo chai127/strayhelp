@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import "./styles/App.css";
 import Navbar from "./components/Navbar";
-import Login from "./components/Login";
-import SignUp from "./components/SignUp";
-import Hero from "./components/Hero";
-import HowItWorks from "./components/HowItWorks";
-import About from "./components/About";
+import Login from "./components/LandingPage/Login";
+import SignUp from "./components/LandingPage/SignUp";
+import Hero from "./components/LandingPage/Hero";
+import HowItWorks from "./components/LandingPage/HowItWorks";
+import About from "./components/LandingPage/About";
 import Footer from "./components/Footer";
+import Dashboard from "./components/NGO/NGODashboard"; 
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 
@@ -14,34 +15,32 @@ function App() {
   const [page, setPage] = useState("main"); // "main", "login", "signup", "dashboard"
   const [user, setUser] = useState(null);
 
-  // Listen to Firebase auth state
+  // Listen to auth state
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
-        setPage("dashboard"); // Go to dashboard when logged in
+        setPage("dashboard"); //show dashboard on login
       } else {
         setUser(null);
-        setPage("main"); // Show main SPA when logged out
+        setPage("main"); //  back to landing page if logged out
       }
     });
 
     return () => unsubscribe();
   }, []);
 
-  // Dashboard view
-  if (page === "dashboard") {
+  // Dashboard view (only visible when logged in)
+  if (page === "dashboard" && user) {
     return (
       <div>
-        <Navbar setPage={setPage} />
-        <h1>Dashboard</h1>
-        <p>Welcome, {user?.email}</p>
-        <button onClick={() => auth.signOut()}>Logout</button>
+        {/* <Navbar setPage={setPage} /> */}
+        <Dashboard user={user} /> 
       </div>
     );
   }
 
-  // Main SPA views
+  // Landing / Auth pages
   return (
     <>
       <Navbar setPage={setPage} />

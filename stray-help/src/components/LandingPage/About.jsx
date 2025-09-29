@@ -1,8 +1,8 @@
 import React from "react";
-import "../styles/About.css";
-import missionIcon from "../assets/mission.png";
-import aiIcon from "../assets/ai.png";
-import communityIcon from "../assets/community.png";
+import "../../styles/About.css";
+import missionIcon from "../../assets/mission.png";
+import aiIcon from "../../assets/ai.png";
+import communityIcon from "../../assets/community.png";
 
 const About = () => {
     return (

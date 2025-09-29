@@ -1,8 +1,8 @@
 import React from "react";
-import "../styles/HowItWorks.css";
-import step1Icon from "../assets/step1.png"; // camera icon
-import step2Icon from "../assets/step2.png"; // location/map icon
-import step3Icon from "../assets/step3.png"; // heart/NGO icon
+import "../../styles/HowItWorks.css";
+import step1Icon from "../../assets/step1.png"; // camera icon
+import step2Icon from "../../assets/step2.png"; // location/map icon
+import step3Icon from "../../assets/step3.png"; // heart/NGO icon
 
 const HowItWorks = () => {
     return (

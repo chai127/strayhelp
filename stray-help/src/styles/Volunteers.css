@@ -1,0 +1,79 @@
+/* ==================================== */
+/* VOLUNTEERS PAGE (Enhanced) */
+/* ==================================== */
+.volunteers-page {
+    padding: 4rem;
+    max-width: 800px;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 12px;
+    /* Soften the shadow and align it with the primary color palette */
+    box-shadow: 0 8px 25px rgba(251, 151, 32, 0.15); 
+}
+
+.volunteers-page h2 {
+    color: var(--primary-orange-dark);
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    /* Add a subtle separator below the title */
+    border-bottom: 3px solid var(--accent-green); 
+}
+
+.volunteers-page ul {
+    list-style: none;
+    padding: 0;
+}
+
+.volunteers-page li {
+    background-color: #fff;
+    /* Use a softer border color and add transition for hover */
+    border: 1px solid #e0e0e0; 
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Soft initial shadow */
+}
+
+/* Add a polished hover effect to list items */
+.volunteers-page li:hover {
+    border-color: var(--primary-orange); /* Highlight the border */
+    background-color: #fefcf9; /* Very slight off-white tint */
+    transform: translateY(-3px); /* Subtle lift */
+    box-shadow: 0 6px 15px rgba(251, 151, 32, 0.1); /* Clearer shadow */
+}
+
+.volunteers-page li span:first-child {
+    font-weight: 700; /* Bolder for names */
+    font-size: 1.2rem; /* Slightly larger for emphasis */
+    color: var(--text-dark);
+}
+
+.volunteers-page li span:last-child {
+    /* Change opacity to a variable or lighter shade for better control */
+    color: #6c757d; 
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .volunteers-page {
+        padding: 2rem 1.5rem; /* Reduced padding on small screens */
+        border-radius: 0; /* Full width appearance */
+    }
+
+    .volunteers-page li {
+        flex-direction: column; /* Stack name and info vertically */
+        align-items: flex-start;
+        padding: 1rem;
+    }
+
+    .volunteers-page li span:first-child {
+        margin-bottom: 0.3rem;
+    }
+}

@@ -1,7 +1,7 @@
 :root {
-  --primary-orange: hsl(33, 94%, 55%); /* soft pastel orange */
-  --primary-orange-dark: hsl(32, 94%, 59%);
-  --accent-green: #a8d5ba; /* pastel mint green */
+  --primary-orange: rgb(248, 151, 32); /* soft pastel orange */
+  --primary-orange-dark: rgb(249, 157, 52);
+  --accent-green: rgb(169, 214, 187); /* pastel mint green */
   --text-dark: #2c2c2c;
   --bg-light: #fffaf5;
   --font-logo: "Kranky", serif;
