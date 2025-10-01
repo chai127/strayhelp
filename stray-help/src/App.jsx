@@ -7,7 +7,7 @@ import Hero from "./components/LandingPage/Hero";
 import HowItWorks from "./components/LandingPage/HowItWorks";
 import About from "./components/LandingPage/About";
 import Footer from "./components/Footer";
-import UserDashboard from "./components/User/UserDashboard"; 
+import UserDashboard from "./components/USER/UserDashboard"; 
 import NGODashboard from "./components/NGO/NGODashboard"; 
 
 function App() {
