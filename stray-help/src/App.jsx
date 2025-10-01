@@ -9,7 +9,6 @@ import About from "./components/LandingPage/About";
 import Footer from "./components/Footer";
 import UserDashboard from "./components/User/UserDashboard"; 
 import NGODashboard from "./components/NGO/NGODashboard"; 
-import WorkerDashboard from "./components/WORKER/WorkerDashboard";
 
 function App() {
   // 'main', 'login', 'signup', 'dashboard' (dashboard is now inferred from userRole)
@@ -32,7 +31,6 @@ function App() {
     return (
       <>
         {/* Render a specific dashboard based on the logged-in role */}
-        {userRole === "ngo-worker" && <WorkerDashboard setPage={setPage} role={userRole} setUserRole={setUserRole}/> }
         {userRole === "user" && <UserDashboard  setPage={setPage} role={userRole} setUserRole={setUserRole} />}
         {userRole === "ngo-admin" && 
           <NGODashboard role={userRole}  setPage={setPage} setUserRole={setUserRole} />}

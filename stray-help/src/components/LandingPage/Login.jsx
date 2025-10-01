@@ -5,7 +5,6 @@ import "../../styles/Login.css";
 const MOCK_USERS = [
   { email: "user@app.com", password: "password", role: "user" },
   { email: "ngo_admin@app.com", password: "password", role: "ngo-admin" },
-  { email: "ngo_worker@app.com", password: "password", role: "ngo-worker" },
   // Adding a general fallback for the role selector
   { email: "guest@app.com", password: "password", role: "user" }, 
 ];
@@ -86,9 +85,9 @@ const Login = ({ setPage, setUserRole }) => {
             className="auth-select"
             required
           >
+            <option value=""  disabled  selected>Select a Login Option</option>
             <option value="user">User</option>
             <option value="ngo-admin">NGO Admin</option>
-            <option value="ngo-worker">NGO Worker</option>
           </select>
 
           <label>Email</label>
