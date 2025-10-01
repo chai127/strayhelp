@@ -12,6 +12,7 @@ const KanbanBoard = ({ selectedCase }) => {
   }
 
   return (
+    <section id="kanban-board">
     <div className="kanban-board details-view">
       <h3>Case Details: #{selectedCase.id}</h3>
       <div className="details-container">
@@ -39,6 +40,7 @@ const KanbanBoard = ({ selectedCase }) => {
         </div>
       </div>
     </div>
+    </section>
   );
 };
 

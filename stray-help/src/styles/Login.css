@@ -106,7 +106,48 @@
     transform: translateY(-2px);
 }
 
+/* --- ROLE SELECT STYLES --- */
+.auth-form .auth-select {
+    /* Inherit padding, border, and size from the input fields for consistency */
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    
+    /* Ensure it takes full width and aligns well */
+    width: 100%;
+    
+    /* Change cursor to indicate interactivity */
+    cursor: pointer;
+    
+    /* Standard transition for focus/hover effects */
+    transition: border 0.3s, box-shadow 0.3s;
+    
+    /* Reset default select arrow/appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+    /* Add a custom arrow icon for better aesthetics (optional but recommended) */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23b3b3b3%22%20d%3D%22M287%20173.5c-4.1%204.1-8.5%206.2-13.3%206.2-4.8%200-9.2-2.1-13.3-6.2L146.2%2050.2%2032%20173.5c-4.1%204.1-8.5%206.2-13.3%206.2-4.8%200-9.2-2.1-13.3-6.2-4.1-4.1-6.2-8.5-6.2-13.3s2.1-9.2%206.2-13.3L146.2%2023.5%20287%20147.1c4.1%204.1%206.2%208.5%206.2%2013.3s-2.1%209.2-6.2%2013.1z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 10px auto;
+}
 
+/* Focus style matching your input focus */
+.auth-form .auth-select:focus {
+    border: 2px solid var(--primary-orange);
+    /* Remove the default input focus style border to prevent double border if present */
+    border-width: 2px;
+}
+
+/* Style for the options within the dropdown (browser-dependent, but good to set font) */
+.auth-form .auth-select option {
+    font-size: 1rem;
+    color: var(--text-dark);
+}
 
 /* RESPONSIVE */
 @media (max-width: 480px) {

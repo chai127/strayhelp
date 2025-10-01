@@ -9,6 +9,7 @@ const dummyVolunteers = [
 
 const Volunteers = () => {
   return (
+    <section id="volunteers-page">
     <div className="volunteers-page">
       <h2>Volunteers</h2>
       <ul>
@@ -20,6 +21,7 @@ const Volunteers = () => {
         ))}
       </ul>
     </div>
+    </section>
   );
 };
 

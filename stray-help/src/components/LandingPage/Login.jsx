@@ -1,21 +1,71 @@
 import React, { useState } from "react";
 import "../../styles/Login.css";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
 
-const Login = ({ setPage }) => {
+// WARNING: This is a MOCK data for frontend-only demonstration.
+const MOCK_USERS = [
+  { email: "user@app.com", password: "password", role: "user" },
+  { email: "ngo_admin@app.com", password: "password", role: "ngo-admin" },
+  { email: "ngo_worker@app.com", password: "password", role: "ngo-worker" },
+  // Adding a general fallback for the role selector
+  { email: "guest@app.com", password: "password", role: "user" }, 
+];
+
+// setRole prop 
+const Login = ({ setPage, setUserRole }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [selectedRole, setSelectedRole] = useState("user"); 
   const [error, setError] = useState("");
+
+  // --- NEW FUNCTION TO HANDLE ROLE CHANGE AND AUTO-FILL ---
+  const handleRoleChange = (e) => {
+    const newRole = e.target.value;
+    setSelectedRole(newRole);
+    setError(""); // Clear any previous error
+
+    // Find the first mock user that matches the newly selected role
+    const mockUser = MOCK_USERS.find(user => user.role === newRole);
+
+    if (mockUser) {
+      // Auto-fill the email and password fields with the mock user's data
+      setEmail(mockUser.email);
+      setPassword(mockUser.password);
+    } else {
+      // If no mock user is found (shouldn't happen with the current MOCK_USERS)
+      // Clear the fields to force manual entry.
+      setEmail("");
+      setPassword("");
+    }
+  };
+  // --------------------------------------------------------
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      // App.jsx will handle redirect to dashboard automatically
-    } catch (err) {
-      setError(err.message);
+
+    // 1. Find the user in the mock database
+    const user = MOCK_USERS.find(
+      (u) => u.email === email && u.password === password
+    );
+
+    if (user) {
+      // 2. Check if the provided credentials match the selected role
+      if (user.role === selectedRole) {
+        // 3. SUCCESSFUL MOCK LOGIN
+        // Pass the role up to the parent App component (using setUserRole prop)
+        setUserRole(user.role); 
+        
+        // Since setPage is not strictly needed after a role is set, 
+        // the parent App component (App.jsx) is expected to handle the redirect
+        // based on the new user role state.
+
+      } else {
+        // Mismatch between credentials and the role chosen in the dropdown
+        setError(`Login failed. These credentials do not belong to a ${selectedRole} account.`);
+      }
+    } else {
+      // 4. FAILED LOGIN
+      setError("Invalid email or password.");
     }
   };
 
@@ -24,13 +74,30 @@ const Login = ({ setPage }) => {
       <div className="auth-container">
         <h2>Login</h2>
         <form className="auth-form" onSubmit={handleSubmit}>
+          
+          {/* Role Selection Dropdown */}
+          <label htmlFor="role-select">Login as</label>
+          <select
+            id="role-select"
+            value={selectedRole}
+            // --- Use the new handler here ---
+            onChange={handleRoleChange} 
+            // --------------------------------
+            className="auth-select"
+            required
+          >
+            <option value="user">User</option>
+            <option value="ngo-admin">NGO Admin</option>
+            <option value="ngo-worker">NGO Worker</option>
+          </select>
+
           <label>Email</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            placeholder="Enter your email"
+            placeholder="Enter your email (e.g., user@app.com)"
           />
 
           <label>Password</label>
@@ -39,7 +106,7 @@ const Login = ({ setPage }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            placeholder="Enter your password"
+            placeholder="Enter your password (e.g., password)"
           />
 
           <button type="submit" className="auth-btn">
@@ -47,6 +114,7 @@ const Login = ({ setPage }) => {
           </button>
           {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
         </form>
+
         <p className="auth-switch">
           Don’t have an account?{" "}
           <button

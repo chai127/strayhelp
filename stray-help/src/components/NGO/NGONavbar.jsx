@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import "../../styles/NGONavbar.css";
 
-const NGONavbar = ({ user, setPage }) => {
+const NGONavbar = ({ user, setPage,setUserRole }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
+
+  const scrollToSection = (id) => {
+        setPage('dashboard'); // ensure main content is shown
+        setMenuOpen(false); // close mobile menu
+        const section = document.getElementById(id);
+        if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+        }
+    };
 
   return (
     <nav className="navbar">
@@ -22,27 +31,35 @@ const NGONavbar = ({ user, setPage }) => {
         {/* Nav Links */}
         <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
           <li>
-            <button onClick={() => setPage("dashboard")}>Dashboard</button>
+            <button onClick={() => scrollToSection("dashboard")}>Dashboard</button>
           </li>
           <li>
-            <button onClick={() => setPage("triage")}>Triage Queue</button>
+            <button onClick={() => scrollToSection("triage-queue")}>Triage Queue</button>
           </li>
           <li>
-            <button onClick={() => setPage("activeBoard")}>Active Board</button>
+            <button onClick={() => scrollToSection("kanban-board")}>Active Board</button>
           </li>
           <li>
-            <button onClick={() => setPage("volunteers")}>Volunteers</button>
+            <button onClick={() => scrollToSection("volunteers-page")}>Volunteers</button>
           </li>
 
           {/* User Menu */}
           <div className="auth">
             <li>
-              <button className="login" onClick={() => setPage("profile")}>
+              <button className="login" onClick={() => scrollToSection("profile")}>
                 {user?.email || "Profile"}
               </button>
             </li>
             <li>
-              <button className="login" onClick={() => { setPage("main"); }}>Logout</button>
+              <button
+                    className="login"
+                    onClick={() => {
+                      setUserRole(null); // clear the user role
+                      setPage("main");   // return to landing page
+                    }}
+                  >
+                    Logout
+                  </button>
             </li>
           </div>
         </ul>

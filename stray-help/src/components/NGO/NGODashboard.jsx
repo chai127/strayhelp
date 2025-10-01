@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import "../../styles/NGODashboard.css";
-import Sidebar from "./Sidebar"; // Now correctly imported
+import Sidebar from "./Sidebar"; 
 import TriageQueue from "./TriageQueue";
 import KanbanBoard from "./KanbanBoard";
-import NGONavbar from "./NGONavbar"; // Assuming this is already created
+import NGONavbar from "./NGONavbar"; 
 import Volunteers from "./Volunteers";
 
 // src/components/NGODashboard.jsx
@@ -16,13 +16,13 @@ const mockUser = {
     ngoName: "City Animal Rescue Foundation"
 };
 
-const NGODashboard = ({ user = mockUser }) => {
+const NGODashboard = ({ setPage, user = mockUser,setUserRole }) => { 
     // selectedCase will hold the data of the report clicked in the TriageQueue
     const [selectedCase, setSelectedCase] = useState(null);
 
     return (
         <div className="ngo-dashboard">
-            <NGONavbar />
+            <NGONavbar user={user} setPage={setPage} setUserRole={setUserRole} />
 
             {/* The main layout container: Sidebar and Main Content */}
             <div className="dashboard-content-wrapper">

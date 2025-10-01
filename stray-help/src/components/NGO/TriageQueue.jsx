@@ -45,6 +45,7 @@ const mockReports = [
  */
 const TriageQueue = ({ setSelectedCase }) => {
     return (
+        <section id="triage-queue">
         <div className="triage-queue">
             <h3>🚨 Incoming Triage Queue</h3>
             
@@ -76,6 +77,7 @@ const TriageQueue = ({ setSelectedCase }) => {
                 })}
             </div>
         </div>
+        </section>
     );
 };
 

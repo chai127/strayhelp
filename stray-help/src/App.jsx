@@ -7,46 +7,51 @@ import Hero from "./components/LandingPage/Hero";
 import HowItWorks from "./components/LandingPage/HowItWorks";
 import About from "./components/LandingPage/About";
 import Footer from "./components/Footer";
-import Dashboard from "./components/NGO/NGODashboard"; 
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase";
+import UserDashboard from "./components/User/UserDashboard"; 
+import NGODashboard from "./components/NGO/NGODashboard"; 
+import WorkerDashboard from "./components/WORKER/WorkerDashboard";
 
 function App() {
-  const [page, setPage] = useState("main"); // "main", "login", "signup", "dashboard"
-  const [user, setUser] = useState(null);
+  // 'main', 'login', 'signup', 'dashboard' (dashboard is now inferred from userRole)
+  const [page, setPage] = useState("main"); 
+  
+  // The 'user' object is now simplified to hold the logged-in role
+  const [userRole, setUserRole] = useState(null); // null, 'user', 'ngo-admin', 'ngo-worker'
+  
+  
+  // Function to be passed to Login component to handle mock login success
+  const handleUserLogin = (role) => {
+    setUserRole(role);
+    // Optionally set page to 'dashboard' here, but the primary render logic
+    // will now handle the dashboard view based on userRole being non-null.
+    setPage('dashboard');
+  };
 
-  // Listen to auth state
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        setUser(currentUser);
-        setPage("dashboard"); //show dashboard on login
-      } else {
-        setUser(null);
-        setPage("main"); //  back to landing page if logged out
-      }
-    });
-
-    return () => unsubscribe();
-  }, []);
-
-  // Dashboard view (only visible when logged in)
-  if (page === "dashboard" && user) {
+  // 1. Dashboard view (visible if userRole is set)
+  if (userRole) {
     return (
-      <div>
-        {/* <Navbar setPage={setPage} /> */}
-        <Dashboard user={user} /> 
-      </div>
+      <>
+        {/* Render a specific dashboard based on the logged-in role */}
+        {userRole === "ngo-worker" && <WorkerDashboard setPage={setPage} role={userRole} setUserRole={setUserRole}/> }
+        {userRole === "user" && <UserDashboard  setPage={setPage} role={userRole} setUserRole={setUserRole} />}
+        {userRole === "ngo-admin" && 
+          <NGODashboard role={userRole}  setPage={setPage} setUserRole={setUserRole} />}
+        
+         
+      </>
     );
   }
 
-  // Landing / Auth pages
+  // 2. Landing / Auth pages (visible if no userRole is set)
   return (
     <>
-      <Navbar setPage={setPage} />
+      <Navbar setPage={setPage} userRole={userRole} setUserRole={setUserRole} />
 
-      {page === "login" && <Login setPage={setPage} />}
+      {/* Pass the handleUserLogin function to the Login component */}
+      {page === "login" && <Login setPage={setPage} setUserRole={handleUserLogin} />}
+      
       {page === "signup" && <SignUp setPage={setPage} />}
+      
       {page === "main" && (
         <>
           <Hero setPage={setPage} />
