@@ -1,0 +1,71 @@
+/* src/styles/LiveMap.css */
+
+:root {
+    /* Assuming these variables are available from your main CSS/theme */
+    --primary-orange: rgb(248, 151, 32); 
+    --primary-orange-dark: rgb(249, 157, 52);
+    --accent-green: rgb(169, 214, 187); /* Pastel Mint Green */
+    --text-dark: #2c2c2c;
+    --text-secondary: #6c757d; /* Muted gray for consistency */
+
+    /* New variables derived from the accent green for the map */
+    --map-background: #f0fff0; /* Very light green/mint for background */
+    --map-border-dash: #98fb98; /* Pale green border */
+    --map-text-primary: #38761d; /* Darker green for main text */
+    --map-text-secondary: #6aa84f; /* Medium green for status text */
+}
+
+.live-map-placeholder {
+    /* Inherit dashboard panel styling for consistency */
+    background-color: #ffffff;
+    border: 1px solid var(--card-border-color, #e0e0e0); /* Use a common border variable or default */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.live-map-placeholder h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    /* Use theme color for heading */
+    color: var(--text-dark); 
+    font-size: 1.25rem;
+    /* Use accent green for separator */
+    border-bottom: 2px solid var(--accent-green); 
+    padding-bottom: 10px;
+}
+
+.map-display-area {
+    flex-grow: 1;
+    /* Map Background: Very light green */
+    background-color: var(--map-background); 
+    /* Map Border: Soft green dashed border */
+    border: 2px dashed var(--map-border-dash); 
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.1rem;
+    /* Map Main Text: Dark green */
+    color: var(--map-text-primary); 
+}
+
+.map-display-area p {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+.map-display-area .status-text {
+    font-size: 0.9rem;
+    /* Map Status Text: Medium green */
+    color: var(--map-text-secondary); 
+    margin-top: 10px;
+    font-weight: normal;
+}

@@ -1,209 +1,246 @@
-/* KANBAN BOARD */
-
-.kanban-board {
-    /* Use flex-grow of 2 to give it more width than the TriageQueue (which should be flex: 1) */
-    flex: 2;
-    /* Use the same base background as the other content cards */
-    background-color: #fff; 
-    padding: 2rem;
-    border-radius: 12px;
-    /* Soften the shadow and border to match the main dashboard panels */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
-    border: 1px solid rgba(0, 0, 0, 0.08); /* Lighter border */
-    overflow-y: auto; /* Important: Allows the content to scroll if it exceeds the height */
+/* Styling for Severity Tags */
+.severity-tag {
+  padding: 0.4rem 0.8rem;
+  border-radius: 16px;
+  font-weight: 600;
+  text-transform: capitalize;
 }
 
-/* --- Empty State --- */
+.severity-tag.low {
+  background-color:var(--severity-low);
+  color: rgb(83, 78, 78);
+}
+
+.severity-tag.medium {
+  background-color: var(--severity-medium);
+  color: rgb(83, 78, 78);
+}
+
+.severity-tag.high {
+  background-color: var(--severity-high);
+  color: rgb(83, 78, 78);
+}
+
+
+
+
+.kanban-board {
+  height: 500px;
+  background-color: var(--surface-white); 
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
+  border: 1px solid rgba(74, 99, 122, 0.08); 
+  overflow-y: auto; 
+}
+
 .kanban-board.empty-state {
-    /* Ensure the empty state takes the full height of the component */
-    height: 100%; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: var(--text-dark);
+  display: flex;
+  width: 90vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--text-dark);
+}
+.empty-panel-placeholder {
+display: flex;
+align-items: center;
+justify-content: center;
+color: #95a5a6;
+font-style: italic;
+border: 1px dashed #ecf0f1;
+min-height: 300px; 
 }
 
 .kanban-board.empty-state p:first-of-type {
-    font-size: 1.3rem; /* Slightly more prominent */
-    margin-bottom: 0.5rem;
-    font-weight: 600;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 .kanban-board.empty-state p {
-    color: #666; /* Subdue the secondary text */
+  color: var(--text-light); 
 }
 
-/* --- Content Header --- */
 .kanban-board h3 {
-    color: var(--primary-orange-dark);
-    margin-bottom: 1.5rem;
-    /* Use a solid, clear line for the separator */
-    border-bottom: 2px solid var(--accent-green); 
-    padding-bottom: 0.8rem;
-    font-size: 1.8rem;
-    font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--accent-green); 
+  padding-bottom: 0.8rem;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
-/* --- Details Layout --- */
 .details-container {
-    display: grid;
-    /* Changed to 60/40 layout to give more space to the summary */
-    grid-template-columns: 3fr 2fr; 
-    gap: 2rem;
+  display: grid;
+  grid-template-columns: 3fr 2fr; 
+  gap: 1rem;
 }
 
-/* --- Report Summary (Left Column) --- */
 .report-summary {
-    background-color: #fcfcfc; /* Very light background for distinction */
-    padding: 1.5rem;
-    border-radius: 8px;
-    border: 1px solid var(--accent-green);
+  background-color: var(--bg-light); 
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--accent-green);
 }
 
 .report-summary h4 {
-    color: var(--primary-orange);
-    margin-bottom: 1rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 1rem;
+  color: var(--primary-orange-dark); 
+  margin-bottom: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 1rem;
 }
 
 .report-summary p {
-    font-size: 1rem;
-    margin-bottom: 0.8rem; /* Increased spacing between lines */
-    line-height: 1.5;
-    word-break: break-word; /* Ensure long words wrap */
+  font-size: 1rem;
+  /* margin-bottom: 0.8rem; */
+  line-height: 1.5;
+  word-break: break-word;
 }
 
 .report-summary strong {
-    color: var(--text-dark);
-    font-weight: 600;
-    display: inline-block;
-    min-width: 100px; /* Aligns the data points nicely */
+  color: var(--text-dark);
+  font-weight: 600;
+  display: inline-block;
+  min-width: 100px;
 }
 
-/* --- Case Image Placeholder (Right Column) --- */
 .case-image-placeholder {
-    /* Maintain clean white background */
-    background-color: #fff; 
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* Use a dashed, colorful border to indicate a placeholder */
-    border: 2px dashed var(--primary-orange); 
-    position: relative;
-    min-height: 250px; /* Ensure a minimum height */
+  background-color: var(--surface-white); 
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px dashed var(--primary-orange); 
+  position: relative;
+  min-height: 250px;
 }
 
 .image-caption {
-    position: absolute;
-    bottom: 0.5rem;
-    font-size: 0.8rem;
-    color: var(--text-dark);
-    /* Use a slightly darker, less transparent background */
-    background-color: rgba(255, 255, 255, 0.85); 
-    padding: 2px 8px;
-    border-radius: 4px;
+  position: absolute;
+  bottom: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-dark);
+  background-color: rgba(255, 255, 255, 0.85); 
+  padding: 2px 8px;
+  border-radius: 4px;
 }
 
-/* --- Case Actions --- */
 .case-actions {
-    /* Make the action row span across both grid columns */
-    grid-column: 1 / -1; 
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.05); /* Separator line */
+  grid-column: 1 / -1; 
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(74, 99, 122, 0.1); 
 }
 
 .btn-primary,
 .btn-secondary,
 .btn-tertiary {
-    /* Re-apply core button properties for self-containment/override */
-    display: inline-block;
-    padding: 0.8rem 1.5rem;
-    border-radius: 30px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    border: 2px solid transparent; /* Set a default transparent border */
+  display: inline-block;
+  padding: 0.8rem 1rem;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border: 2px solid transparent; 
 }
 
-/* Primary Button (Orange) */
 .btn-primary {
-    background: var(--primary-orange);
-    color: #fff;
-    border-color: var(--primary-orange);
+  background: var(--primary-orange);
+  color: white;  
+  border-color: var(--primary-orange);
 }
 
 .btn-primary:hover {
-    /* Subtle darken and a shadow matching the orange color */
-    background: var(--primary-orange-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(248, 151, 32, 0.4); 
+  background: var(--primary-orange-dark); 
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(228, 212, 195, 0.5); 
 }
 
-/* Secondary Button (Neutral/Gray) */
 .btn-secondary {
-    background: #e0e0e0; 
-    color: var(--text-dark);
-    border-color: #e0e0e0;
+  background: var(--neutral-light); 
+  color: var(--text-dark);
+  border-color: var(--neutral-light);
 }
 
 .btn-secondary:hover {
-    /* Light shadow for neutral buttons */
-    background: #d4d4d4; 
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); 
+  background: #dce3e7; 
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); 
 }
 
 /* Tertiary Button (Outline/Accent Green) */
 .btn-tertiary {
-    background: transparent;
-    color: var(--text-dark);
-    border-color: var(--accent-green); /* Use the accent green for the border */
+  background: var(--accent-green);
+   color: white; 
+  border-color: var(--accent-green); 
 }
 
 .btn-tertiary:hover {
-    /* Give it a slight background color on hover */
-    background: var(--accent-green);
-    color: var(--text-dark); /* Keep text dark or adjust based on your needs */
-    transform: translateY(-2px);
-    /* Shadow matching the accent color */
-    box-shadow: 0 6px 15px rgba(169, 214, 187, 0.5); 
+  background: var(--accent-green);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(169, 214, 187, 0.6); 
 }
 
-/* --- Responsive Adjustments --- */
 @media (max-width: 1200px) {
-    /* On vertical stacking, let the panels take full width */
-    .kanban-board {
-        flex: none;
-        width: 100%;
-        min-height: auto;
-    }
+  .kanban-board {
+    flex: none;
+    width: 100%;
+    min-height: auto;
+  }
 }
+
 
 @media (max-width: 768px) {
-    /* Stack the summary and image container vertically on mobile/tablet */
-    .details-container {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .case-actions {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .case-actions > * {
-        width: 100%; /* Full width buttons on small screens */
-        text-align: center;
-    }
+  /* Restructure the details grid to a single column */
+  .details-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  /* Make the action buttons stack vertically and span full width */
+  .case-actions {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem; /* Tighter gap for stacking */
+  }
+  
+  /* Ensure all action buttons take up the full width for easy tapping */
+  .case-actions > * {
+    width: 100%;
+    text-align: center;
+    /* Increase padding for a larger tap target */
+    padding: 1rem 1.2rem;
+  }
+
+  /* Adjust Kanban board properties for better fit */
+  .kanban-board {
+    padding: 0.8rem; /* Slightly reduced padding */
+    height: auto; /* Allow content to dictate height */
+    max-height: 80vh; /* Set a maximum height to keep it scrollable */
+  }
+
+  /* Make the empty state fill the smaller viewport better */
+  .kanban-board.empty-state {
+    width: 100%;
+    padding: 2rem 1rem;
+  }
+  
+  /* Reduce heading size slightly for smaller screens */
+  .kanban-board h3 {
+    font-size: 1.5rem;
+    padding-bottom: 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Ensure the summary container has a bit more breathing room */
+  .report-summary {
+    padding: 1.2rem;
+  }
 }

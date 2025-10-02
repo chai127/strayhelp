@@ -1,79 +1,209 @@
-/* ==================================== */
-/* VOLUNTEERS PAGE (Enhanced) */
-/* ==================================== */
-.volunteers-page {
-    padding: 4rem;
-    max-width: 800px;
-    margin: auto;
-    background-color: #fff;
-    border-radius: 12px;
-    /* Soften the shadow and align it with the primary color palette */
-    box-shadow: 0 8px 25px rgba(251, 151, 32, 0.15); 
+/* ================================================= */
+/* VOLUNTEERS PANEL (Pastel Theme Integration)       */
+/* ================================================= */
+
+:root {
+    /* USER'S PROVIDED ROOT VARIABLES */
+    --primary-orange: rgb(248, 151, 32); /* soft pastel orange */
+    --primary-orange-dark: rgb(249, 157, 52);
+    --accent-green: rgb(169, 214, 187); /* pastel mint green */
+    --text-dark: #2c2c2c;
+
+    /* STATUS COLORS (Defined to match a pastel/soft theme) */
+    --status-dispatched: #ff6961; /* Soft Red/Coral */
+    --status-available: var(--accent-green); /* Using the provided pastel green */
+    --status-resting: var(--severity-medium);   /* Soft Yellow/Cream */
+    
+    /* UI ELEMENTS */
+    --card-border-color: #e9ecef; /* Light gray border */
+    --text-secondary: #6c757d;    /* Muted gray for secondary info */
 }
 
-.volunteers-page h2 {
-    color: var(--primary-orange-dark);
-    font-size: 2.2rem;
-    margin-bottom: 2rem;
-    padding-bottom: 0.5rem;
-    /* Add a subtle separator below the title */
-    border-bottom: 3px solid var(--accent-green); 
-}
+/* -------------------- PANEL BASE -------------------- */
 
-.volunteers-page ul {
-    list-style: none;
-    padding: 0;
-}
-
-.volunteers-page li {
-    background-color: #fff;
-    /* Use a softer border color and add transition for hover */
-    border: 1px solid #e0e0e0; 
-    padding: 1.5rem;
+.volunteers-panel {
+    padding: 25px;
+    background-color: #ffffff; 
     border-radius: 8px;
-    margin-bottom: 1rem;
+    border: 1px solid var(--card-border-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04); 
+    max-height: 70vh;
+    overflow-y: auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* -------------------- HEADER STYLES -------------------- */
+
+.volunteers-header {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--card-border-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; 
+}
+
+.volunteers-panel h2 {
+    /* Using primary dark text for the main heading */
+    color: var(--text-dark); 
+    font-size: 1.3rem; 
+    font-weight: 700;
+    margin: 0;
+    min-width: 50%; 
+}
+
+.dispatch-summary {
+    display: flex;
+    gap: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    flex-wrap: wrap; 
+    margin-top: 0; 
+}
+
+/* --- Summary Chip Design --- */
+
+.dispatched-count, .available-count {
+    margin: 5px 2px;
+    padding: 5px 10px;
+    border-radius: 15px; 
+    transition: all 0.2s;
+    white-space: nowrap; 
+}
+
+.dispatched-count {
+    /* High contrast text against the soft red */
+    color: #fff; 
+    background-color: var(--status-dispatched);
+    /* Soft shadow using the same status color */
+    box-shadow: 0 1px 3px rgba(255, 105, 97, 0.3);
+}
+
+.available-count {
+    /* High contrast text against the light green */
+    color: var(--text-dark); 
+    background-color: var(--accent-green); 
+    border: 1px solid rgba(169, 214, 187, 0.5); /* Lighter border */
+}
+
+/* -------------------- CARD LIST -------------------- */
+
+.volunteer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.volunteer-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     transition: all 0.3s ease-in-out;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Soft initial shadow */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid transparent; 
 }
 
-/* Add a polished hover effect to list items */
-.volunteers-page li:hover {
-    border-color: var(--primary-orange); /* Highlight the border */
-    background-color: #fefcf9; /* Very slight off-white tint */
-    transform: translateY(-3px); /* Subtle lift */
-    box-shadow: 0 6px 15px rgba(251, 151, 32, 0.1); /* Clearer shadow */
+/* Hover Effect - Subtle use of the primary orange */
+.volunteer-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    background-color: #fffcf8; /* Very subtle off-white */
 }
 
-.volunteers-page li span:first-child {
-    font-weight: 700; /* Bolder for names */
-    font-size: 1.2rem; /* Slightly larger for emphasis */
+/* Status Color Coding (Left Border) */
+.volunteer-card.status-dispatched {
+    border-left-color: var(--status-dispatched);
+}
+.volunteer-card.status-available {
+    border-left-color: var(--status-available);
+}
+.volunteer-card.status-resting {
+    border-left-color: var(--status-resting);
+}
+
+.volunteer-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.volunteer-name {
+    font-weight: 700;
+    font-size: 1.1rem;
     color: var(--text-dark);
 }
 
-.volunteers-page li span:last-child {
-    /* Change opacity to a variable or lighter shade for better control */
-    color: #6c757d; 
-    font-size: 0.95rem;
-    font-style: italic;
+.volunteer-specialty {
+    font-size: 0.85rem;
+    /* Use a dedicated secondary text color */
+    color: var(--text-secondary); 
+    margin-top: 2px;
 }
 
-/* --- Responsive Adjustments --- */
-@media (max-width: 768px) {
-    .volunteers-page {
-        padding: 2rem 1.5rem; /* Reduced padding on small screens */
-        border-radius: 0; /* Full width appearance */
-    }
+.volunteer-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--card-border-color); /* Used the variable for consistency */
+}
 
-    .volunteers-page li {
-        flex-direction: column; /* Stack name and info vertically */
+.detail-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary); /* Use secondary color */
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.detail-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* Specific styling for the Status text within the card */
+.status-text.detail-value {
+    font-weight: 700;
+}
+.status-dispatched .status-text { color: var(--status-dispatched); }
+.status-available .status-text { color: var(--status-available); }
+.status-resting .status-text { color: var(--status-resting); }
+
+/* -------------------- RESPONSIVE ADJUSTMENTS -------------------- */
+
+@media (max-width: 992px) {
+    .volunteer-details {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 576px) {
+    .volunteers-header {
+        flex-direction: column;
         align-items: flex-start;
-        padding: 1rem;
     }
 
-    .volunteers-page li span:first-child {
-        margin-bottom: 0.3rem;
+    .volunteers-panel h2 {
+        margin-bottom: 10px;
+    }
+    
+    .dispatch-summary {
+        margin-top: 5px; 
+        gap: 8px; 
+    }
+    
+    .volunteer-details {
+        /* Allow details to stack on small dashboard panels */
+        grid-template-columns: 1fr;
     }
 }

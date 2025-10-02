@@ -1,184 +1,202 @@
-/* ==================================== */
-/* TriageQueue.css */
-/* ==================================== */
 
-/* --- Custom Properties (Variables) --- */
 :root {
 /* Pastel-inspired background and surfaces */
- --bg-light: #f9f9fb;    /* Very light, almost white background */
-  --surface-white: #ffffff;  /* Pure white for main container */
-  
-  /* Text Colors (Kept dark for readability) */
-  --text-dark: #4a637a;    /* Dark blue-gray for main text */
-  --text-light: #a9b9c9;   /* Light blue-gray for secondary text */
-  
-  /* Primary Highlight Color (Softer Orange) */
-  --primary-orange: #ffb86c; /* Pastel light orange */
-  
-  /* Severity Colors (Pastel versions) */
-  --severity-high: #ff9aa2;  /* Soft Coral/Pink for High */
-  --severity-medium: #ffd79a; /* Soft Gold/Peach for Medium */
-  --severity-low: #efed6d;  /* Soft Mint Green for Low */
-  
-  /* Hover Color (Very Light Blue) */
-  --hover-blue: #f2f7fe;
+ 
+ /* Severity Colors (Pastel versions) */
+ --severity-high: #ff9aa2c2; /* Soft Coral/Pink for High */
+ --severity-medium: #ffaf38ab; /* Soft Gold/Peach for Medium */
+ --severity-low: #fdcc2bac;  /* Soft Mint Green for Low */
+ 
+ /* Hover Color (Very Light Blue) */
+ --hover-blue: #e6c78b54;
 }
 
 
-/* ------------------------------------ */
-/* --- Overall Container & Heading --- */
-/* ------------------------------------ */
-
 .triage-queue {
-  flex: 0 0 280px; 
-  padding: 15px;
-  background-color: var(--surface-white);
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
+ padding: 15px;
+ background-color: var(--surface-white);
+ box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+ display: flex;
+ flex-direction: column;
+ height: 500px;
 }
 
 .triage-queue h3 {
-  margin-top: 0;
-  margin-bottom: 20px;
-  color: var(--text-dark); 
-  font-size: 1.25rem;
-  /* Uses the softer pastel orange for the border */
-  border-bottom: 2px solid var(--primary-orange); 
-  padding-bottom: 8px;
-  font-weight: 600;
+ margin-top: 0;
+ margin-bottom: 20px;
+ color: var(--text-dark); 
+ font-size: 1.25rem;
+ /* border-bottom: 2px solid var(--primary-orange);  */
+ padding-bottom: 8px;
+ font-weight: 600;
 }
-
-/* ------------------------------------ */
-/* --- List Wrapper --- */
-/* ------------------------------------ */
 
 .queue-list {
-  flex-grow: 1;
+ flex-grow: 1;
 }
 
 
-/* ------------------------------------ */
-/* --- Individual Item Styling --- */
-/* ------------------------------------ */
-
 .queue-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 12px 15px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  border-left: 5px solid transparent; 
-  background-color: var(--bg-light); /* Light item background */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+ display: flex;
+ justify-content: space-between;
+ align-items: flex-start;
+ padding: 12px 15px;
+ margin-bottom: 10px;
+ border-radius: 8px;
+ cursor: pointer;
+ transition: all 0.2s ease-in-out;
+ border-left: 5px solid transparent; 
+ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .queue-item:hover {
-  background-color: var(--hover-blue);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ background-color: var(--hover-blue);
+ transform: translateY(-2px);
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .queue-item:active {
-  transform: translateY(0);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+ transform: translateY(0);
+ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* ------------------------------------ */
-/* --- Severity Colors for Border (Now Pastel) --- */
-/* ------------------------------------ */
-
 .severity-high {
-  border-left-color: var(--severity-high);
+ border-left-color: var(--severity-high);
 }
 
 .severity-medium {
-  border-left-color: var(--severity-medium);
+ border-left-color: var(--severity-medium);
 }
 
 .severity-low {
-  border-left-color: var(--severity-low);
+ border-left-color: var(--severity-low);
 }
 
-/* ------------------------------------ */
-/* --- Information Section (Animal Name, ID, Location) --- */
-/* ------------------------------------ */
-
 .report-info {
-  flex-grow: 1;
-  margin-right: 10px;
+ flex-grow: 1;
+ margin-right: 10px;
 }
 
 /* Main Heading: Animal Type */
 .report-info h4 {
-  margin: 0 0 4px 0;
-  font-size: 1rem;
-  color: var(--text-dark);
-  font-weight: 600; 
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+ margin: 0 0 4px 0;
+ font-size: 1rem;
+ color: var(--text-dark);
+ font-weight: 600; 
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
 }
 
 /* Secondary Info: Case ID and Location */
 .report-info p {
-  margin: 0;
-  font-size: 0.8rem; 
-  color: var(--text-light); 
-  line-height: 1.4;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+ margin: 0;
+ font-size: 0.8rem; 
+ color: var(--text-light); 
+ line-height: 1.4;
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
 }
 
 /* Focus Style for Case ID */
 .report-info p strong {
-  color: var(--text-dark);
-  font-weight: 700;
+ color: var(--text-dark);
+ font-weight: 700;
 }
 
-
-/* ------------------------------------ */
-/* --- Metadata Section (Severity & Time) --- */
-/* ------------------------------------ */
-
 .report-meta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  font-size: 0.75rem;
-  white-space: nowrap;
+ display: flex;
+ flex-direction: column;
+ align-items: flex-end;
+ font-size: 0.75rem;
+ white-space: nowrap;
 }
 
 .severity-tag {
-  font-weight: 700;
-  padding: 3px 6px;
-  border-radius: 4px;
-  margin-bottom: 5px;
-  /* Use a dark color for the text on the pastel tag background for readability */
-  color: var(--text-dark); 
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Reduced shadow for a softer look */
+ font-weight: 700;
+ padding: 3px 6px;
+ border-radius: 4px;
+ margin-bottom: 5px;
+ 
+ color: var(--text-dark); 
+ box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); 
 }
 
 .time-tag {
-  color: var(--text-light);
-  font-style: italic;
+ color: var(--text-light);
+ font-style: italic;
+}
+
+.queue-header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--primary-orange); 
+    padding-bottom: 8px;
+}
+
+.triage-queue h3 {
+    /* Retained from previous revision */
+    margin: 0;
+    color: var(--text-dark); 
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.view-all-button {
+    /* Professional button styling */
+    background-color: transparent;
+    border: 1px solid var(--primary-orange);
+    color: var(--text-dark);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    /* Use a high-contrast style for primary action */
+    background-color: var(--primary-orange);
+    color: white; 
+    border-color: var(--primary-orange);
+}
+
+.view-all-button:hover {
+    background-color: #ff914d; /* Darker hover state */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.view-all-button:active {
+    transform: translateY(1px);
 }
 
 
-/* Severity Tag Colors (Backgrounds - Now Pastel) */
+/* Severity Tag Colors (Backgrounds ) */
 .severity-high .severity-tag {
-  background-color: var(--severity-high);
+ background-color: var(--severity-high);
+   color: rgb(83, 78, 78);
 }
 
 .severity-medium .severity-tag {
-  background-color: var(--severity-medium);
+ background-color: var(--severity-medium);
+   color: rgb(83, 78, 78);
 }
 
 .severity-low .severity-tag {
-  background-color: var(--severity-low);
+ background-color: var(--severity-low);
+   color: rgb(83, 78, 78);
 }
 
+@media (max-width: 500px) {
+    .queue-header-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px; /* Space between title and button when stacked */
+    }
+    .view-all-button {
+        width: 100%; /* Full width when stacked */
+        text-align: center;
+    }
+}

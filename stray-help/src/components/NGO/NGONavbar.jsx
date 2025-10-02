@@ -30,17 +30,17 @@ const NGONavbar = ({ user, setPage,setUserRole }) => {
 
         {/* Nav Links */}
         <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
-          <li>
+          {/* <li>
             <button onClick={() => scrollToSection("dashboard")}>Dashboard</button>
-          </li>
+          </li> */}
           <li>
-            <button onClick={() => scrollToSection("triage-queue")}>Triage Queue</button>
+            <button onClick={() => scrollToSection("triage-queue")}>Reports</button>
           </li>
           <li>
             <button onClick={() => scrollToSection("kanban-board")}>Active Board</button>
           </li>
           <li>
-            <button onClick={() => scrollToSection("volunteers-page")}>Volunteers</button>
+            <button onClick={() => scrollToSection("volunteers-panel")}>Volunteers</button>
           </li>
 
           {/* User Menu */}

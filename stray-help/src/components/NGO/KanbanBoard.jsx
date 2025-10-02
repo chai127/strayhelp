@@ -14,17 +14,18 @@ const KanbanBoard = ({ selectedCase }) => {
   return (
     <section id="kanban-board">
     <div className="kanban-board details-view">
-      <h3>Case Details: #{selectedCase.id}</h3>
+      <h3>Case Details: {selectedCase.id}</h3>
       <div className="details-container">
         {/* Placeholder for the AI-generated Report and Image */}
-        <div className="report-summary">
+          <div className="report-summary">
             <h4>AI Report Summary</h4>
-            <p><strong>Severity:</strong> <span className="severity-tag high">{selectedCase.severity}</span></p>
+            <p><strong>Severity:</strong> <span className={`severity-tag ${selectedCase.severity.toLowerCase()}`}>{selectedCase.severity}</span></p>
             <p><strong>Animal/Breed:</strong> {selectedCase.animal}</p>
             <p><strong>Injury Detected:</strong> {selectedCase.injuryDetected}</p>
             <p><strong>Recommended Action:</strong> Immediate dispatch and transport to Vet Hospital.</p>
             <p><strong>Vet Hospitals Nearby:</strong> City Vet (2.1mi), Animal Care Clinic (4.5mi)</p>
-        </div>
+          </div>
+
         
         <div className="case-image-placeholder">
             {/* The actual photo uploaded by the user */}
