@@ -36,7 +36,7 @@
 
 .kanban-board.empty-state {
   display: flex;
-  background-color: white; 
+  background-color: var(--bg-light); 
   width: 90vw;
   flex-direction: column;
   justify-content: center;
@@ -67,7 +67,7 @@ min-height: 300px;
 .kanban-board h3 {
   color: var(--text-dark);
   margin-bottom: 1rem;
-  border-bottom: 2px solid var(--accent-green); 
+  border-bottom: 2px solid var(--primary-orange); 
   padding-bottom: 0.8rem;
   font-size: 1.8rem;
   font-weight: 700;

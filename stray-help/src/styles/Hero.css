@@ -2,12 +2,11 @@
 /* HERO SECTION */
 .hero {
     width: 100%;
-    background: var(--bg-light);
+    background: var(--surface-white);
     padding: 8em 6em 2em 6em;
     display: flex;
     justify-content: center;
-    box-shadow: 0px 5px 10px -5px hsl(0, 0%, 85%);
-    margin-bottom: 3px;
+    box-shadow: 0px 5px 10px -5px hsla(0, 5%, 25%, 0.812);
 }
 
 .hero-content {

@@ -27,7 +27,7 @@ function Header({ setPage, userRole, setUserRole }) {
           </button>
           <button className="hd-nav-item">
             {/* <IconHowItWorks />  */}
-            How It Works
+            Adopt
           </button>
           <button className="hd-nav-item">
             {/* <IconSettings /> */}

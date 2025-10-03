@@ -1,32 +1,27 @@
 /* ================================================= */
-/* VOLUNTEERS PANEL (Pastel Theme Integration)       */
+/* VOLUNTEERS PANEL (Minimalist & Pastel Theme) */
 /* ================================================= */
 
 :root {
-    /* USER'S PROVIDED ROOT VARIABLES */
-    --primary-orange: rgb(248, 151, 32); /* soft pastel orange */
-    --primary-orange-dark: rgb(249, 157, 52);
-    --accent-green: rgb(169, 214, 187); /* pastel mint green */
-    --text-dark: #2c2c2c;
+
 
     /* STATUS COLORS (Defined to match a pastel/soft theme) */
     --status-dispatched: #ff6961; /* Soft Red/Coral */
-    --status-available: var(--accent-green); /* Using the provided pastel green */
-    --status-resting: var(--severity-medium);   /* Soft Yellow/Cream */
+    --status-available: #63d691; 
+    --status-resting: #f5e021; /* Soft Cream/Khaki for resting */
     
     /* UI ELEMENTS */
-    --card-border-color: #e9ecef; /* Light gray border */
-    --text-secondary: #6c757d;    /* Muted gray for secondary info */
+    --card-border-color: #f1f3f5; /* VERY light gray border/separator */
+    --text-secondary: #7e8c9b; /* Muted gray-blue for secondary info */
 }
 
 /* -------------------- PANEL BASE -------------------- */
 
 .volunteers-panel {
-    padding: 25px;
+    padding: 20px;
     background-color: #ffffff; 
     border-radius: 8px;
-    border: 1px solid var(--card-border-color);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04); 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03); 
     max-height: 70vh;
     overflow-y: auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -35,8 +30,9 @@
 /* -------------------- HEADER STYLES -------------------- */
 
 .volunteers-header {
-    margin-bottom: 15px;
-    padding-bottom: 10px;
+    margin-bottom: 20px; 
+    padding-bottom: 15px;
+    /* THIS IS THE ONLY BOTTOM BORDER KEPT */
     border-bottom: 1px solid var(--card-border-color);
     display: flex;
     justify-content: space-between;
@@ -45,9 +41,8 @@
 }
 
 .volunteers-panel h2 {
-    /* Using primary dark text for the main heading */
     color: var(--text-dark); 
-    font-size: 1.3rem; 
+    font-size: 1.4rem; 
     font-weight: 700;
     margin: 0;
     min-width: 50%; 
@@ -55,36 +50,33 @@
 
 .dispatch-summary {
     display: flex;
-    gap: 10px;
-    font-size: 0.85rem;
+    gap: 15px; 
+    font-size: 0.9rem;
     font-weight: 600;
     flex-wrap: wrap; 
     margin-top: 0; 
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid var(--primary-orange);
 }
 
 /* --- Summary Chip Design --- */
 
 .dispatched-count, .available-count {
-    margin: 5px 2px;
+    margin: 0; 
     padding: 5px 10px;
-    border-radius: 15px; 
+    border-radius: 20px; 
     transition: all 0.2s;
     white-space: nowrap; 
 }
 
 .dispatched-count {
-    /* High contrast text against the soft red */
     color: #fff; 
     background-color: var(--status-dispatched);
-    /* Soft shadow using the same status color */
-    box-shadow: 0 1px 3px rgba(255, 105, 97, 0.3);
 }
 
 .available-count {
-    /* High contrast text against the light green */
     color: var(--text-dark); 
-    background-color: var(--accent-green); 
-    border: 1px solid rgba(169, 214, 187, 0.5); /* Lighter border */
+    background-color: var(--status-available); 
 }
 
 /* -------------------- CARD LIST -------------------- */
@@ -104,27 +96,36 @@
     flex-direction: column;
     gap: 10px;
     transition: all 0.3s ease-in-out;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    border-left: 5px solid transparent; 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    
+    /* FIX: Revert border to a simple, consistent box */
+    border: 1px solid var(--card-border-color); 
+    
+    /* REMOVED: border-left and border-bottom-color status styling */
 }
 
 /* Hover Effect - Subtle use of the primary orange */
 .volunteer-card:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Subtle change in shadow for hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transform: translateY(-2px);
-    background-color: #fffcf8; /* Very subtle off-white */
+    background-color: #fffcf8; 
+    
+    /* Optional: Add a subtle status border on hover instead of permanent */
+    /* border-left: 5px solid var(--primary-orange); */ 
 }
 
-/* Status Color Coding (Left Border) */
+/* Status Color Coding (REMOVED - now only used on status text inside the card) */
 .volunteer-card.status-dispatched {
-    border-left-color: var(--status-dispatched);
+    border: 1px solid var(--card-border-color); /* Reset the full border */
 }
 .volunteer-card.status-available {
-    border-left-color: var(--status-available);
+    border: 1px solid var(--card-border-color); /* Reset the full border */
 }
 .volunteer-card.status-resting {
-    border-left-color: var(--status-resting);
+    border: 1px solid var(--card-border-color); /* Reset the full border */
 }
+
 
 .volunteer-info {
     display: flex;
@@ -139,7 +140,6 @@
 
 .volunteer-specialty {
     font-size: 0.85rem;
-    /* Use a dedicated secondary text color */
     color: var(--text-secondary); 
     margin-top: 2px;
 }
@@ -147,9 +147,9 @@
 .volunteer-details {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    gap: 20px; 
     padding-top: 10px;
-    border-top: 1px dashed var(--card-border-color); /* Used the variable for consistency */
+    border-top: 1px solid var(--card-border-color); 
 }
 
 .detail-item {
@@ -158,15 +158,15 @@
 }
 
 .detail-label {
-    font-size: 0.75rem;
-    color: var(--text-secondary); /* Use secondary color */
+    font-size: 0.7rem; 
+    color: var(--text-secondary); 
     text-transform: uppercase;
     font-weight: 500;
     margin-bottom: 2px;
 }
 
 .detail-value {
-    font-size: 0.9rem;
+    font-size: 0.95rem; 
     font-weight: 600;
     color: var(--text-dark);
 }

@@ -33,7 +33,7 @@ border-left: 4px solid var(--primary-orange);
     flex-direction: row;
     gap:20px;
     min-height: 500px;
-    margin-bottom: 2em;
+    margin-bottom: 4rem;
 }
 
 .dashboard-panels > * {

@@ -4,7 +4,7 @@ import '../../styles/LiveMap.css'; // You'll need to create this CSS file
 const LiveMap = () => {
     return (
         <div className="live-map-placeholder">
-            <h3>Live Volunteer & Case Map</h3>
+            <h3>Live Map</h3>
             <div className="map-display-area">
                 <p>
                     [Interactive Map View Here]

@@ -31,9 +31,16 @@ function ReportForm() {
     <div className="rf-card">
       <h2 className="rf-title">Report an Injured Stray Animal</h2>
 
-      <p className="rf-instruction">
-        <strong>Immediate assistance starts here.</strong> We only need one clear photo from the site of injury. Based on the photo and your location, our system will generate a report for immediate NGO action.
-      </p>
+<p className="rf-instruction">
+  <ol>
+    <li>Take a clear photo showing the animal and its condition.</li>
+    <li>Upload Photo in the area below.</li>
+    <li>Our system will automatically detect your location.</li>
+    <li>A detailed report will be generated and sent to nearby animal welfare NGOs for immediate assistance.</li>
+    <li>You can track the status of your report in your <i>My Reports</i>.</li>
+  </ol>
+</p>
+
 
       <div
         className="rf-upload-area"

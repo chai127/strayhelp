@@ -1,4 +1,4 @@
-// src/components/NGODashboard.jsx
+// src/components/NGODashboard.jsx (Refined)
 
 import { useState } from "react";
 import "../../styles/NGODashboard.css";
@@ -23,27 +23,38 @@ const NGODashboard = ({ setPage, user = mockUser, setUserRole }) => {
 
             <div className="dashboard-content-wrapper">
                 <div className="dashboard-main">
-                    <h2>Case Management & Workflow</h2>
+                    <h2>Case Management</h2>
 
                     <div className="dashboard-panels">
-                        <TriageQueue setSelectedCase={setSelectedCase} />
-                        <KanbanBoard selectedCase={selectedCase} />
+                        {/* NEW: Wrapper for Triage Queue to apply specific width rules 
+                            and override the general flex: 1 1 0 rule.
+                        */}
+                        <div className="triage-panel">
+                            <TriageQueue setSelectedCase={setSelectedCase} />
+                        </div>
+                        {/* The Kanban Board will take up the rest of the available space */}
+                        <div className="kanban-panel">
+                            <KanbanBoard selectedCase={selectedCase} />
+                        </div>
                     </div>
 
                     <h2>Volunteer Management</h2>
                     <div className="dashboard-panels">
+                        {/* Using explicit wrappers for consistency */}
                         <div className="volunteer-panel-container">
                             <Volunteers />
                         </div>
-                        <div className="live-map-container"> {/* Updated class name */}
+                        <div className="live-map-container">
                             <LiveMap /> 
                         </div>
                     </div>
+                    
+                    <h2>Adoption Management</h2>
                     <div className="dashboard-panels">
-                            <div className="adoption-container">
-                                <Adoption/>
-                            </div>
+                        <div className="adoption-container-wrapper">
+                            <Adoption/>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>

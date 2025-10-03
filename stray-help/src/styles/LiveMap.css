@@ -1,4 +1,4 @@
-/* src/styles/LiveMap.css */
+/* src/styles/LiveMap.css - Minimalist Fixes */
 
 :root {
     /* Assuming these variables are available from your main CSS/theme */
@@ -6,23 +6,26 @@
     --primary-orange-dark: rgb(249, 157, 52);
     --accent-green: rgb(169, 214, 187); /* Pastel Mint Green */
     --text-dark: #2c2c2c;
-    --text-secondary: #6c757d; /* Muted gray for consistency */
+    --text-secondary: #6c757d; 
+    --card-border-color: #f1f3f5; /* Use the light border color from other components */
 
     /* New variables derived from the accent green for the map */
-    --map-background: #f0fff0; /* Very light green/mint for background */
-    --map-border-dash: #98fb98; /* Pale green border */
-    --map-text-primary: #38761d; /* Darker green for main text */
-    --map-text-secondary: #6aa84f; /* Medium green for status text */
+    --map-background: #f7fff7; /* Even lighter mint for background */
+    --map-border-dash: rgba(169, 214, 187, 0.6); /* Transparent Pastel Green border */
+    --map-text-primary: #548b54; /* Muted Green for main text */
+    --map-text-secondary: #8fbc8f; /* Light Muted Green for status text */
 }
 
 .live-map-placeholder {
-    /* Inherit dashboard panel styling for consistency */
     background-color: #ffffff;
-    border: 1px solid var(--card-border-color, #e0e0e0); /* Use a common border variable or default */
+    /* Use the light border from the theme, soften the shadow */
+    border: 1px solid var(--card-border-color);
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    flex: 1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03); /* Lighter shadow */
+    
+    /* MAXIMIZE WIDTH: flex: 1 ensures it takes all available horizontal space */
+    flex: 1 1 0%; 
     min-height: 400px;
     display: flex;
     flex-direction: column;
@@ -31,11 +34,11 @@
 .live-map-placeholder h3 {
     margin-top: 0;
     margin-bottom: 15px;
-    /* Use theme color for heading */
     color: var(--text-dark); 
-    font-size: 1.25rem;
-    /* Use accent green for separator */
-    border-bottom: 2px solid var(--accent-green); 
+    font-size: 1.4rem; /* Slightly larger heading for prominence */
+    font-weight: 700;
+    /* Using primary-orange for a consistent header divider line */
+    border-bottom: 2px solid var(--primary-orange); 
     padding-bottom: 10px;
 }
 
@@ -43,9 +46,9 @@
     flex-grow: 1;
     /* Map Background: Very light green */
     background-color: var(--map-background); 
-    /* Map Border: Soft green dashed border */
+    /* Map Border: Softened dashed border using the accent theme color */
     border: 2px dashed var(--map-border-dash); 
-    border-radius: 4px;
+    border-radius: 8px; /* Slightly more rounded to match the card */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -53,19 +56,24 @@
     text-align: center;
     padding: 20px;
     font-size: 1.1rem;
-    /* Map Main Text: Dark green */
+    
+    /* Map Main Text: Muted dark green */
     color: var(--map-text-primary); 
 }
 
 .map-display-area p {
-    margin: 5px 0;
-    font-weight: bold;
+    margin: 8px 0; /* Increased margin for spacing */
+    font-weight: 600; /* Bolder for key info */
 }
 
 .map-display-area .status-text {
-    font-size: 0.9rem;
-    /* Map Status Text: Medium green */
+    font-size: 0.95rem; /* Slightly larger status text */
+    /* Map Status Text: Light Muted Green */
     color: var(--map-text-secondary); 
-    margin-top: 10px;
-    font-weight: normal;
+    margin-top: 15px; /* More separation from main text */
+    font-weight: 500;
+    text-transform: uppercase; /* Use uppercase for status */
+    /* Add a subtle underline for the status text */
+    border-bottom: 1px dotted var(--map-text-secondary);
+    padding-bottom: 2px;
 }

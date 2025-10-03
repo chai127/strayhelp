@@ -1,221 +1,207 @@
-/* Container */
+/* ================================================= */
+/* src/styles/Adoption.css (Minimal & Tighter)    */
+/* ================================================= */
+
+/* -------------------- Container & Headings -------------------- */
 .adoption-container {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  color: var(--text-dark);
+    max-width: 1100px;
+    margin: 0 auto;
+    /* FIX: Reduced vertical padding to 0.8rem (approx 13px) for a tighter fit. */
+    color: var(--text-dark);
 }
 
-/* Headings */
 .adoption-container h1 {
-  font-size: 2.2rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 2rem;
-  color: var(--primary-orange-dark);
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: var(--primary-orange-dark);
+    border: none;
+    padding: 0;
 }
 
 .adoption-container h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--accent-green);
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+    color: var(--text-dark);
+    /* KEEP: Clean bottom border as a separator */
+    border-bottom: 1px solid var(--neutral-light);
+    padding-bottom: 0.5rem;
+    border-left: none;
+    border-right: none;
 }
 
-/* Animal List */
-.animal-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.animal-card {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1.5rem;
-
-  background-color: var(--surface-white);
-  border: 1px solid var(--neutral-light);
-  border-radius: 12px;
-  padding: 1rem 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
-  height: auto;
-  width: 100%;
-}
-
-.animal-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-}
-
-.animal-card img {
-  width: 180px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 10px;
-  flex-shrink: 0;
-}
-
-.animal-card-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  justify-content: center;
-}
-
-.animal-card strong {
-  font-size: 1.2rem;
-  color: var(--text-dark);
-}
-
-.animal-card p {
-  font-size: 1rem;
-  color: var(--text-light);
-}
-
-/* Form */
+/* -------------------- Add Animal Form -------------------- */
 .add-animal-form {
-  background-color: var(--bg-light);
-  border: 1px solid var(--neutral-light);
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--neutral-light);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 3rem; 
 }
 
 .add-animal-form form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: stretch;
 }
 
 .add-animal-form input {
+ flex: 1 1 180px;
+ padding: 0.8rem 1rem;
+ border: 1px solid var(--neutral-light, #dce3e7); 
+ border-radius: 8px;
+ font-size: 1rem;
+ background-color: var(--surface-white, #fff);
+ color: var(--text-dark, #333);
+}
+
+.add-animal-form input:focus {
+ outline: none;
+ border-color: var(--primary-orange, #ff7f4d);
+ box-shadow: 0 0 0 2px rgba(248, 151, 32, 0.2);
+}
+
+.add-animal-form button {
+    flex: 1 1 100%;
+    max-width: 200px;
+    align-self: flex-start;
+    background-color: var(--primary-orange);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-animal-form button:hover {
+    background-color: var(--primary-orange-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* -------------------- Animal List & Card -------------------- */
+.animal-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
+    gap: 1.5rem;
+}
+
+.animal-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    background-color: var(--surface-white);
+    border: 1px solid var(--neutral-light);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.animal-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.animal-card img {
+    width: 100px; 
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.animal-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    justify-content: center;
+}
+
+.animal-card strong {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.animal-card p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+.empty-state {
+    text-align: center;
+    font-style: italic;
+    color: var(--text-light);
+    border: 1px dashed var(--neutral-light);
+    border-radius: 8px;
+}
+
+
+.add-animal-form input {
+  /* DESKTOP/DEFAULT STYLES */
+  flex: 1 1 180px;
   padding: 0.8rem 1rem;
-  border: 1px solid var(--neutral-light);
+  /* FIX: Ensure a visible border in the normal state */
+  border: 1px solid var(--neutral-light, #dce3e7); 
   border-radius: 8px;
   font-size: 1rem;
-  background-color: var(--surface-white);
-  color: var(--text-dark);
+  background-color: var(--surface-white, #fff);
+  color: var(--text-dark, #333);
 }
 
 .add-animal-form input:focus {
   outline: none;
-  border-color: var(--accent-green);
-  box-shadow: 0 0 0 2px rgba(169, 214, 187, 0.4);
+  /* FIX: Change border color on focus */
+  border-color: var(--primary-orange, #ff7f4d);
+  /* Enhance visibility with a subtle shadow */
+  box-shadow: 0 0 0 2px rgba(248, 151, 32, 0.2);
 }
-
-/* Button */
-.add-animal-form button {
-  background-color: var(--primary-orange);
-  color: white;
-  font-weight: 600;
-  border: none;
-  border-radius: 30px;
-  padding: 0.8rem 1.2rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.add-animal-form button:hover {
-  background-color: var(--primary-orange-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Empty state */
-.empty-state {
-  text-align: center;
-  font-style: italic;
-  color: var(--text-light);
-}
-
-/* Responsive: Mobile */
+/* -------------------- Responsive -------------------- */
 @media (max-width: 768px) {
+    /* Form Fixes */
+  .add-animal-form form {
+    flex-direction: column;
+    /* FIX: Center the stacked content within the form */
+    align-items: center;
+  }
+
+  .add-animal-form input {
+    /* FIX: Prevent inputs from taking 100% width. Constrain to 90% or a fixed max. */
+        width: 90%; 
+        max-width: 400px; /* Optional: Sets an absolute max size for consistency */
+    flex: 0 0 auto; /* Override flex: 1 1 180px */
+  }
+
+  .add-animal-form button {
+    /* Keep the button centered and constrained */
+    max-width: 400px; /* Match input max-width */
+        width: 90%;
+        align-self: center; /* Ensures button aligns with constrained inputs */
+  }
+
+    /* Other Mobile Styles */
+  .adoption-container h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
   .animal-list {
     grid-template-columns: 1fr;
   }
 
   .animal-card {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 1rem;
+    flex-direction: row; 
+    padding: 0.8rem;
   }
 
   .animal-card img {
-    width: 100%;
-    max-width: 300px;
-    height: 180px;
-  }
-
-  .animal-card-content {
-    align-items: center;
-  }
-
-  .add-animal-form {
-    padding: 1rem;
-  }
-
-  .animal-card strong {
-    font-size: 1.1rem;
-  }
-
-  .animal-card p {
-    font-size: 0.95rem;
-  }
-}
-
-/* Large screens: Wider layout and spacing */
-@media (min-width: 1024px) {
-  .adoption-container {
-    max-width: 1200px;
-    padding: 3rem 2rem;
-  }
-
-  .animal-list {
-    grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
-    gap: 2rem;
-  }
-
-  .animal-card {
-    padding: 2rem;
-    gap: 2rem;
-  }
-
-  .animal-card img {
-    width: 240px;
-    height: 160px;
-    border-radius: 12px;
-  }
-
-  .animal-card strong {
-    font-size: 1.4rem;
-  }
-
-  .animal-card p {
-    font-size: 1.1rem;
-  }
-
-  .add-animal-form {
-    padding: 2rem;
-  }
-
-  .add-animal-form input {
-    font-size: 1.1rem;
-    padding: 1rem;
-  }
-
-  .add-animal-form button {
-    font-size: 1.05rem;
-    padding: 1rem 1.6rem;
-  }
-
-  .adoption-container h1 {
-    font-size: 2.8rem;
-  }
-
-  .adoption-container h2 {
-    font-size: 2rem;
+    width: 80px;
+    height: 80px;
   }
 }

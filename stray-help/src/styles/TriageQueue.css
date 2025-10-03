@@ -1,131 +1,36 @@
-
+/* ================================================= */
+/* Triage Queue CSS (Responsive Fix)                 */
+/* ================================================= */
 :root {
-/* Pastel-inspired background and surfaces */
- 
- /* Severity Colors (Pastel versions) */
- --severity-high: #ff9aa2c2; /* Soft Coral/Pink for High */
- --severity-medium: #ffaf38ab; /* Soft Gold/Peach for Medium */
- --severity-low: #fdcc2bac;  /* Soft Mint Green for Low */
- 
-}
+    /* Define Severity Colors */
+    --severity-high: #f33f4e;       /* True Coral/Pink */
+    --severity-medium: #ffaf38;     /* Soft Gold/Peach */
+    --severity-low: #fdcc2b;        /* Soft Mint Green */      /* Defined background light for hover */
 
+    /* Basic UI Colors (pastel orange focus) */
+    --text-dark: #333;
+    --text-light: #6a6a6a;
+    --primary-orange: #ff7f4d;      /* High-contrast action color */
+    --surface-white: #fff;
+    --hover-bg: var(--bg-light);
+    --tag-text-color: #555;
+}
 
 .triage-queue {
- padding: 15px;
- background-color: var(--surface-white);
- box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
- display: flex;
- flex-direction: column;
- height: 500px;
+    padding: 15px;
+    background-color: var(--surface-white);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+
+    /* FIX: Allow component to shrink and grow fluidly */
+    flex-shrink: 1; 
+    flex-grow: 1; 
+    min-width: 250px; /* Set a smaller, more reasonable min-width for usability */
+    width: 100%; /* Ensure it uses the full width of its parent */
 }
 
-.triage-queue h3 {
- margin-top: 0;
- margin-bottom: 20px;
- color: var(--text-dark); 
- font-size: 1.25rem;
- /* border-bottom: 2px solid var(--primary-orange);  */
- padding-bottom: 8px;
- font-weight: 600;
-}
-
-.queue-list {
- flex-grow: 1;
-}
-
-
-.queue-item {
- display: flex;
- justify-content: space-between;
- align-items: flex-start;
- padding: 12px 15px;
- margin-bottom: 10px;
- border-radius: 8px;
- cursor: pointer;
- transition: all 0.2s ease-in-out;
- border-left: 5px solid transparent; 
- box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-}
-
-.queue-item:hover {
- background-color: var(--bg-light);
- transform: translateY(-2px);
- box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.queue-item:active {
- transform: translateY(0);
- box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.severity-high {
- border-left-color: var(--severity-high);
-}
-
-.severity-medium {
- border-left-color: var(--severity-medium);
-}
-
-.severity-low {
- border-left-color: var(--severity-low);
-}
-
-.report-info {
- flex-grow: 1;
- margin-right: 10px;
-}
-
-/* Main Heading: Animal Type */
-.report-info h4 {
- margin: 0 0 4px 0;
- font-size: 1rem;
- color: var(--text-dark);
- font-weight: 600; 
- white-space: nowrap;
- overflow: hidden;
- text-overflow: ellipsis;
-}
-
-/* Secondary Info: Case ID and Location */
-.report-info p {
- margin: 0;
- font-size: 0.8rem; 
- color: var(--text-light); 
- line-height: 1.4;
- white-space: nowrap;
- overflow: hidden;
- text-overflow: ellipsis;
-}
-
-/* Focus Style for Case ID */
-.report-info p strong {
- color: var(--text-dark);
- font-weight: 700;
-}
-
-.report-meta {
- display: flex;
- flex-direction: column;
- align-items: flex-end;
- font-size: 0.75rem;
- white-space: nowrap;
-}
-
-.severity-tag {
- font-weight: 700;
- padding: 3px 6px;
- border-radius: 4px;
- margin-bottom: 5px;
- 
- color: var(--text-dark); 
- box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); 
-}
-
-.time-tag {
- color: var(--text-light);
- font-style: italic;
-}
-
+/* --- Header & Controls --- */
 .queue-header-controls {
     display: flex;
     justify-content: space-between;
@@ -136,65 +41,171 @@
 }
 
 .triage-queue h3 {
-    /* Retained from previous revision */
     margin: 0;
-    color: var(--text-dark); 
+    color: var(--text-dark);
     font-size: 1.25rem;
     font-weight: 700;
 }
 
 .view-all-button {
-    /* Professional button styling */
-    background-color: transparent;
-    border: 1px solid var(--primary-orange);
-    color: var(--text-dark);
+    background-color: var(--primary-orange);
+    color: white;
+    border: none;
     font-size: 0.8rem;
     font-weight: 600;
     padding: 6px 12px;
     border-radius: 4px;
     cursor: pointer;
-    transition: all 0.2s ease;
-    
-    /* Use a high-contrast style for primary action */
-    background-color: var(--primary-orange);
-    color: white; 
-    border-color: var(--primary-orange);
+    transition: background-color 0.2s;
+    flex-shrink: 0; /* Ensures the button doesn't shrink */
 }
 
 .view-all-button:hover {
-    background-color: #ff914d; /* Darker hover state */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #ff914d;
 }
 
-.view-all-button:active {
-    transform: translateY(1px);
+/* --- List & Item Styles --- */
+.queue-list {
+    overflow-y: auto;
 }
 
+.queue-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Softened shadow */
+}
 
-/* Severity Tag Colors (Backgrounds ) */
+.queue-item:hover {
+    background-color: var(--hover-bg); 
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.report-info {
+    flex-grow: 1;
+    margin-right: 10px;
+    min-width: 0; /* Prevents overflow when content is truncated */
+}
+
+.report-info h4 {
+    margin: 0 0 4px 0;
+    font-size: 1rem;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.report-info p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.report-info .injury-text {
+    font-size: 0.75rem;
+    color: var(--text-dark);
+    font-style: italic;
+    margin-top: 2px;
+}
+
+/* --- Meta & Tag Styles (Right Side) --- */
+.report-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.severity-tag {
+    font-weight: 700;
+    padding: 3px 6px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    color: var(--tag-text-color);
+    /* FIX: Adjusting tag background for better mobile contrast/readability */
+    box-shadow: none; 
+    text-transform: uppercase;
+}
+
+/* Severity Tag Background Colors (Using light backgrounds with strong text color for better contrast) */
 .severity-high .severity-tag {
- background-color: var(--severity-high);
-   color: rgb(83, 78, 78);
+    background-color: rgba(243, 63, 78, 0.15); 
+    color: var(--severity-high); 
 }
-
 .severity-medium .severity-tag {
- background-color: var(--severity-medium);
-   color: rgb(83, 78, 78);
+    background-color: rgba(255, 175, 56, 0.2);
+    color: var(--severity-medium);
 }
-
 .severity-low .severity-tag {
- background-color: var(--severity-low);
-   color: rgb(83, 78, 78);
+    background-color: rgba(253, 204, 43, 0.25);
+    color: #cc9900; /* Darker text for readability on the yellow background */
 }
 
+/* ########################################## */
+/* ## RESPONSIVE STYLES ## */
+/* ########################################## */
+
+/* Stacking elements on small screens (e.g., phones) */
 @media (max-width: 500px) {
+    .triage-queue {
+        padding: 10px;
+    }
+    
     .queue-header-controls {
+        /* Stack header controls */
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+    
+    .triage-queue h3 {
+        text-align: center;
+    }
+    
+    .view-all-button {
+        width: 100%;
+    }
+    
+    .queue-item {
+        /* FIX: Stack item content vertically */
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px; /* Space between title and button when stacked */
+        padding: 10px;
     }
-    .view-all-button {
-        width: 100%; /* Full width when stacked */
-        text-align: center;
+
+    .report-info {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 8px; 
+    }
+
+    .report-info p {
+        /* Allow text to wrap on mobile */
+        white-space: normal;
+        overflow: visible;
+        max-height: 2.8em; /* Limit to 2 lines */
+    }
+    
+    .report-meta {
+        /* Display meta tags horizontally */
+        flex-direction: row; 
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .severity-tag {
+        margin-bottom: 0;
     }
 }

@@ -16,7 +16,6 @@ const Volunteers = () => {
     return (
         <section id="volunteers-panel" className="volunteers-panel">
             <div className="volunteers-header">
-                <h2>Volunteer Team ({dummyVolunteers.length})</h2>
                 <div className="dispatch-summary">
                     <span className="dispatched-count">
                         {dispatchedCount} Dispatched
