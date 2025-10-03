@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../../styles/KanbanBoard.css"
 
 
 const KanbanBoard = ({ selectedCase }) => {
