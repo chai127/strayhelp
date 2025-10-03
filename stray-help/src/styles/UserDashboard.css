@@ -1,0 +1,608 @@
+/* 🌐 NAVBAR CONTAINER (Original Reference) */
+.navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--bg-light);
+    z-index: 1000;
+    padding: 0.8rem 2rem;
+    transition: background 0.3s ease, padding 0.3s ease;
+    box-shadow: 0px 5px 10px -5px hsl(0, 0%, 80%);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* 🐾 LOGO */
+.logo {
+    font-family: var(--font-logo);
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-orange-dark);
+}
+
+.logo span {
+    color: var(--text-dark);
+}
+
+/* 📜 NAV LINKS */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    transition: all 0.3s ease;
+}
+
+.nav-links li button,
+.nav-links li a {
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--text-dark);
+    font-size: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    padding: 0.3rem 0.5rem;
+    transition: all 0.3s;
+}
+
+.nav-links li button:hover,
+.nav-links li a:hover {
+    color: var(--primary-orange-dark);
+}
+
+.navbar .auth li button:hover{
+    color: white;
+}
+
+.nav-links li button::after,
+.nav-links li a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: -1px;
+    background: var(--accent-green);
+    transition: width 0.3s;
+}
+
+.nav-links li button:hover::after,
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+/* 🔐 LOGIN/SIGNUP BUTTONS */
+.nav-links .auth {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.nav-links .auth button {
+    background: var(--primary-orange);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.nav-links .auth button:hover {
+    background: var(--primary-orange-dark);
+    transform: translateY(-2px);
+}
+
+/* 🍔 HAMBURGER (MOBILE) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 0.3rem;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 26px;
+    height: 3px;
+    background: var(--text-dark);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Toggle Animation */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+}
+
+/* 📱 RESPONSIVE STYLES (for original navbar) */
+@media (max-width: 1024px) {
+    .nav-links {
+        gap: 1.5rem;
+    }
+    .logo {
+        font-size: 1.5rem;
+    }
+    .nav-links li button,
+    .nav-links li a {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.8rem 1.2rem;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--bg-light);
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 2rem 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.4s ease;
+    }
+
+    .nav-links.open {
+        max-height: 500px;
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .nav-links li button,
+    .nav-links li a {
+        font-size: 1.2rem;
+    }
+
+    .nav-links .auth button {
+        font-size: 1.1rem;
+        padding: 0.7rem 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.4rem;
+    }
+    .nav-links li button,
+    .nav-links li a {
+        font-size: 1rem;
+    }
+    .nav-links .auth button {
+        padding: 0.6rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* ---------------------------------------------------- */
+/*  1. Dashboard Layout (UserDashboard.jsx)             */
+/* ---------------------------------------------------- */
+
+.ud-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--bg-light);
+    font-family: var(--font-base, "Inter", sans-serif);
+    color: var(--text-dark);
+}
+
+/* Main Content Area (Header + Content) */
+.ud-main-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Content Wrapper */
+.ud-content-wrapper {
+    flex-grow: 1;
+    background-color: #ffffff;
+    padding: 2.5rem;
+    margin: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.3s ease;
+}
+
+.ud-content-wrapper:hover {
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.08);
+}
+
+.ud-content-main {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.ud-panels {
+    display: flex;
+    gap: 2rem;
+}
+
+/* ---------------------------------------------------- */
+/*  2. Header (Header.jsx) - FINAL REVISION  */
+/* ---------------------------------------------------- */
+
+.hd-container {
+    /* Mimics .navbar - Fixed position, full width, similar padding and shadow */
+    width: 100%;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    background: var(--bg-light);
+    z-index: 1000; 
+    padding: 0.8rem 2rem; 
+    transition: background 0.3s ease, padding 0.3s ease;
+    box-shadow: 0px 5px 10px -5px hsl(0, 0%, 80%);
+    border-bottom: none; 
+    display: flex;
+    justify-content: center;
+}
+
+/* Wrapper for logo (left) and all right elements (nav + actions) */
+.hd-content-wrapper-inner { 
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    /* This makes the space between hd-left and hd-right/hd-actions huge */
+    justify-content: space-between; 
+}
+
+/* NEW: This element groups the navigation and actions on the right. 
+   We apply it to the <div> wrapping the <nav> in your current JSX. */
+.hd-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* Spacing between nav links and action buttons */
+}
+
+
+/* ---------- Left Section: Logo ONLY ---------- */
+.hd-left {
+    display: flex;
+    align-items: center;
+    /* flex-shrink: 0; ensures the logo doesn't shrink when space is tight */
+}
+
+.hd-logo {
+    /* Mimics .logo */
+    font-family: var(--font-logo);
+    font-size: 1.8rem; 
+    font-weight: bold;
+    color: var(--primary-orange-dark);
+    margin: 0;
+}
+
+
+/* ---------- Top Navigation (Links) ---------- */
+.hd-nav {
+    /* Mimics .nav-links */
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* Matches .nav-links gap */
+    list-style: none;
+    padding: 0; 
+    margin: 0;
+}
+
+.hd-nav-item {
+    /* Mimics .nav-links li a/button */
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--text-dark);
+    font-size: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    padding: 0.3rem 0.5rem;
+    transition: all 0.3s;
+    box-shadow: none;
+}
+
+.hd-nav-item:hover {
+    color: var(--primary-orange-dark);
+    background-color: transparent; 
+}
+
+.hd-nav-item.hd-active {
+    background-color: transparent;
+    color: var(--primary-orange-dark);
+    font-weight: 600;
+    box-shadow: none;
+}
+
+/* Adding the ::after pseudo-element for hover underline */
+.hd-nav-item::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: -1px;
+    background: var(--accent-green);
+    transition: width 0.3s;
+}
+
+.hd-nav-item:hover::after {
+    width: 100%;
+}
+
+
+/* ---------------------------------------------------- */
+/* 3. Rightmost Section: Actions */
+/* ---------------------------------------------------- */
+
+.hd-actions {
+    /* Since hd-actions is a separate element in your JSX,
+       we give it a left margin to push it away from hd-right */
+    display: flex;
+    align-items: center;
+    gap: 1rem; 
+}
+
+/* Notification Icon Button */
+.hd-icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.6rem;
+    border-radius: 50%;
+    color: var(--text-dark);
+    font-size: 1.3rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.hd-icon-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    transform: scale(1.05);
+}
+
+/* CTA Buttons */
+.hd-btn {
+    /* Mimics the style of .nav-links .auth button */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.2rem; 
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s; 
+    font-size: 1rem; 
+    box-shadow: none; 
+}
+
+.hd-btn.hd-primary {
+    background-color: var(--primary-orange);
+    color: #fff;
+    box-shadow: none; 
+}
+
+.hd-btn.hd-primary:hover {
+    background-color: var(--primary-orange-dark);
+    box-shadow: none; 
+    transform: translateY(-2px); 
+}
+
+.hd-btn.hd-secondary {
+    /* Styled as a standard nav link */
+    background-color: transparent;
+    color: var(--text-dark);
+    border: none; 
+    padding: 0.3rem 0.5rem; 
+    font-weight: 500;
+    border-radius: 8px; 
+}
+
+.hd-btn.hd-secondary:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-color: transparent; 
+    color: var(--primary-orange-dark);
+}
+
+/* ---------------------------------------------------- */
+/*  4. Report Form (ReportForm.jsx)                     */
+/* ---------------------------------------------------- */
+
+.rf-card {
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 16px;
+    background-color: #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+.rf-card:hover {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+}
+
+.rf-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-orange-dark);
+    margin-bottom: 0.75rem;
+}
+
+.rf-instruction {
+    font-size: 1.05rem;
+    color: #555;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    padding-bottom: 1.2rem;
+    line-height: 1.6;
+}
+
+.rf-instruction strong {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.rf-upload-area {
+    min-height: 250px;
+    border: 3px dashed var(--accent-green);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    padding: 2.5rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.rf-upload-area:hover {
+    background-color: rgba(169, 214, 187, 0.08);
+    border-color: var(--primary-orange);
+    transform: scale(1.01);
+}
+
+.rf-upload-text {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 0.75rem 0 0.3rem 0;
+}
+
+.rf-limits {
+    font-size: 0.9rem;
+    color: #777;
+    margin: 0;
+}
+
+.rf-file-name {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    font-weight: 500;
+    margin: 0;
+}
+
+.rf-file-name strong {
+    color: var(--primary-orange);
+    font-weight: 700;
+}
+
+/* ---------------------------------------------------- */
+/*  5. Responsive Styles - FINAL REVISION                                */
+/* ---------------------------------------------------- */
+
+@media (max-width: 1024px) {
+    .hd-nav {
+        gap: 1.5rem; 
+    }
+    .hd-logo {
+        font-size: 1.5rem; 
+    }
+    .hd-nav-item {
+        font-size: 0.95rem; 
+    }
+}
+
+@media (max-width: 768px) {
+    .hd-container {
+        position: static; 
+        padding: 1rem 1.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); 
+    }
+
+    .hd-content-wrapper-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .hd-left {
+        width: 100%; 
+    }
+
+    /* Stack Nav and Actions vertically on mobile */
+    .hd-right {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .hd-nav {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+    }
+
+    .hd-actions {
+        /* Actions push to the right/end of the full width container */
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .hd-logo {
+        font-size: 1.6rem;
+    }
+
+    .hd-nav-item {
+        font-size: 0.95rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .hd-btn {
+        font-size: 1rem;
+        padding: 0.6rem 1.5rem;
+    }
+    
+    .ud-content-wrapper {
+        margin: 1rem;
+        padding: 1.8rem;
+    }
+
+    .rf-title {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hd-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .hd-actions {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .hd-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

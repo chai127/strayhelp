@@ -36,6 +36,7 @@
 
 .kanban-board.empty-state {
   display: flex;
+  background-color: white; 
   width: 90vw;
   flex-direction: column;
   justify-content: center;
@@ -44,6 +45,7 @@
   color: var(--text-dark);
 }
 .empty-panel-placeholder {
+  background-color: var(--surface-white); 
 display: flex;
 align-items: center;
 justify-content: center;
