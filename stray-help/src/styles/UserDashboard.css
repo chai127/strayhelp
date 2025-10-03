@@ -486,12 +486,34 @@ margin-bottom: 0.75rem;
 }
 
 .rf-instruction {
-font-size: 1.05rem;
-color: #555;
-margin-bottom: 2rem;
-border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-padding-bottom: 1.2rem;
-line-height: 1.6;
+  background-color: var(--neutral-light, #f9f9f9);
+  border: 1px solid var(--neutral-light, #e0e0e0);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  font-size: 1rem;
+  color: var(--text-dark, #333);
+}
+
+.rf-instruction ol {
+  padding-left: 1.5rem;
+  margin: 0;
+}
+
+.rf-instruction li {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+  position: relative;
+}
+
+.rf-instruction li::marker {
+  font-weight: 600;
+  color: var(--primary-orange, #ff7f4d);
+}
+
+.rf-instruction i {
+  font-style: italic;
+  color: var(--primary-orange-dark, #d45d2c);
 }
 
 .rf-instruction strong {
@@ -637,4 +659,30 @@ width: 100%;
 width: 100%;
 justify-content: center;
 }
+}
+
+@media (max-width: 768px) {
+  .rf-instruction {
+    padding: 1.2rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .rf-instruction ol {
+    padding-left: 1.2rem;
+  }
+
+  .rf-instruction li {
+    margin-bottom: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .rf-instruction {
+    padding: 1rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .rf-instruction ol {
+    padding-left: 1rem;
+  }
 }

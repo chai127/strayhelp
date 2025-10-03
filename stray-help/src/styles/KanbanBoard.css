@@ -1,248 +1,269 @@
-/* Styling for Severity Tags */
-.severity-tag {
-  padding: 0.4rem 0.8rem;
-  border-radius: 16px;
-  font-weight: 600;
-  text-transform: capitalize;
-}
+  :root {
+            --severity-high: #f33f4e;
+            --severity-medium: #ffaf38;
+            --severity-low: #fdcc2b;
 
-.severity-tag.low {
-  background-color:var(--severity-low);
-  color: rgb(83, 78, 78);
-}
+            --text-dark: #333;
+            --text-light: #6a6a6a;
+        }
 
-.severity-tag.medium {
-  background-color: var(--severity-medium);
-  color: rgb(83, 78, 78);
-}
+        /* ======================================== */
+        /* 1. Severity Tags                          */
+        /* ======================================== */
+        .severity-tag {
+            padding: 0.4rem 0.8rem;
+            border-radius: 16px;
+            font-weight: 600;
+            text-transform: capitalize;
+            display: inline-block;
+            color: var(--text-dark);
+        }
+        .severity-tag.low     { background: var(--severity-low); }
+        .severity-tag.medium { background: var(--severity-medium); }
+        .severity-tag.high   {
+            background: var(--severity-high);
+            color: var(--surface-white);
+        }
 
-.severity-tag.high {
-  background-color: var(--severity-high);
-  color: rgb(83, 78, 78);
-}
+        /* ======================================== */
+        /* 2. Main Container & Empty State (NO CARD LOOK) */
+        /* ======================================== */
 
+        /* Style for the filled state container */
+        #kanban-board {
+            flex: 1 1 0%;
+            width: 100%;
+            box-sizing: border-box;
+            /* Removed card styling for a cleaner look */
+            padding: 1.5rem;
+            min-height: 500px; 
+            overflow-y: auto;
+        }
 
+        /* Style for the empty state div */
+        .kanban-board.empty-state {
+            flex: 1 1 0%;
+            width: 100%;
+            box-sizing: border-box;
+            /* Consistent sizing and no card look */
+            padding: 1.5rem;
+            min-height: 500px;
+            overflow-y: auto;
 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-dark);
+        }
 
-.kanban-board {
-  height: 500px;
-  background-color: var(--surface-white); 
+        .kanban-board.empty-state p {
+            color: var(--text-light);
+            margin: 0;
+        }
+        .kanban-board.empty-state p:first-of-type {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            margin-top: 1rem;
+            color: var(--text-dark);
+        }
+
+        /* ======================================== */
+        /* 3. Layout & Content                      */
+        /* ======================================== */
+        #kanban-board h3 { 
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--primary-orange);
+            color: var(--text-dark);
+        }
+
+        .details-container {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 1.5rem;
+        }
+
+        .report-summary {
+            background: var(--bg-light);
+            border: 1px solid var(--accent-green);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        .report-summary h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--primary-orange-dark);
+            margin-bottom: 1rem;
+        }
+        .report-summary p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 0.6rem;
+            word-break: break-word;
+        }
+        .report-summary strong {
+            display: inline-block;
+            min-width: 120px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .case-image-placeholder {
+            background: var(--neutral-light);
+            border: 2px dashed var(--primary-orange);
+            border-radius: 8px;
+            min-height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            flex-direction: column;
+            color: var(--text-light);
+        }
+        .case-image-placeholder p:first-of-type {
+            font-weight: 600;
+        }
+
+        .image-caption {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 2px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+            color: var(--text-dark);
+        }
+
+        .case-actions {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(74, 99, 122, 0.1);
+        }
+
+        /* ======================================== */
+        /* 4. Buttons                               */
+        /* ======================================== */
+        .btn-primary,
+        .btn-secondary,
+        .btn-tertiary {
+            display: inline-block;
+            padding: 0.8rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s ease;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--primary-orange);
+            color: #fff;
+            border-color: var(--primary-orange);
+        }
+        .btn-primary:hover {
+            background: var(--primary-orange-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(228, 212, 195, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--neutral-light);
+            color: var(--text-dark);
+            border-color: var(--neutral-light);
+        }
+        .btn-secondary:hover {
+            background: #dce3e7;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-tertiary {
+            background: var(--accent-green);
+            color: #fff;
+            border-color: var(--accent-green);
+        }
+        .btn-tertiary:hover {
+            background: #6c9a59;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(169, 214, 187, 0.6);
+        }
+
+        /* ======================================== */
+        /* 5. Responsive Adjustments                */
+        /* ======================================== */
+        @media (max-width: 768px) {
+            .details-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            #kanban-board,
+            .kanban-board.empty-state {
+                padding: 1rem;
+                min-height: 400px;
+            }
+            .report-summary {
   padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
-  border: 1px solid rgba(74, 99, 122, 0.08); 
-  overflow-y: auto; 
-}
-
-.kanban-board.empty-state {
-  display: flex;
-  background-color: var(--bg-light); 
-  width: 90vw;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: var(--text-dark);
-}
-.empty-panel-placeholder {
-  background-color: var(--surface-white); 
-display: flex;
-align-items: center;
-justify-content: center;
-color: #95a5a6;
-font-style: italic;
-border: 1px dashed #ecf0f1;
-min-height: 300px; 
-}
-
-.kanban-board.empty-state p:first-of-type {
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-.kanban-board.empty-state p {
-  color: var(--text-light); 
-}
-
-.kanban-board h3 {
-  color: var(--text-dark);
-  margin-bottom: 1rem;
-  border-bottom: 2px solid var(--primary-orange); 
-  padding-bottom: 0.8rem;
-  font-size: 1.8rem;
-  font-weight: 700;
-}
-
-.details-container {
-  display: grid;
-  grid-template-columns: 3fr 2fr; 
-  gap: 1rem;
-}
-
-.report-summary {
-  background-color: var(--bg-light); 
-  padding: 1rem;
-  border-radius: 8px;
-  border: 1px solid var(--accent-green);
-}
-
-.report-summary h4 {
-  color: var(--primary-orange-dark); 
-  margin-bottom: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .report-summary p {
-  font-size: 1rem;
-  /* margin-bottom: 0.8rem; */
-  line-height: 1.5;
-  word-break: break-word;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
 }
 
 .report-summary strong {
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
   color: var(--text-dark);
-  font-weight: 600;
-  display: inline-block;
-  min-width: 100px;
 }
 
-.case-image-placeholder {
-  background-color: var(--surface-white); 
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border: 2px dashed var(--primary-orange); 
-  position: relative;
-  min-height: 250px;
-}
+            .kanban-board.empty-state {
+                padding: 3rem 1rem;
+            }
 
-.image-caption {
-  position: absolute;
-  bottom: 0.5rem;
-  font-size: 0.8rem;
-  color: var(--text-dark);
-  background-color: rgba(255, 255, 255, 0.85); 
-  padding: 2px 8px;
-  border-radius: 4px;
-}
+            #kanban-board h3 { 
+                font-size: 1.4rem;
+                margin-bottom: 1.2rem;
+                padding-bottom: 0.6rem;
+            }
 
-.case-actions {
-  grid-column: 1 / -1; 
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(74, 99, 122, 0.1); 
-}
+            .report-summary {
+                padding: 1.2rem;
+            }
 
-.btn-primary,
-.btn-secondary,
-.btn-tertiary {
-  display: inline-block;
-  padding: 0.8rem 1rem;
-  border-radius: 30px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  border: 2px solid transparent; 
-}
+            .case-image-placeholder {
+                min-height: 200px;
+            }
 
-.btn-primary {
-  background: var(--primary-orange);
-  color: white;  
-  border-color: var(--primary-orange);
-}
+            .case-actions {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.8rem;
+                margin-top: 1.5rem;
+                padding-top: 1rem;
+            }
 
-.btn-primary:hover {
-  background: var(--primary-orange-dark); 
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(228, 212, 195, 0.5); 
-}
-
-.btn-secondary {
-  background: var(--neutral-light); 
-  color: var(--text-dark);
-  border-color: var(--neutral-light);
-}
-
-.btn-secondary:hover {
-  background: #dce3e7; 
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); 
-}
-
-/* Tertiary Button (Outline/Accent Green) */
-.btn-tertiary {
-  background: var(--accent-green);
-   color: white; 
-  border-color: var(--accent-green); 
-}
-
-.btn-tertiary:hover {
-  background: var(--accent-green);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(169, 214, 187, 0.6); 
-}
-
-@media (max-width: 1200px) {
-  .kanban-board {
-    flex: none;
-    width: 100%;
-    min-height: auto;
-  }
-}
-
-
-@media (max-width: 768px) {
-  /* Restructure the details grid to a single column */
-  .details-container {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  /* Make the action buttons stack vertically and span full width */
-  .case-actions {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.8rem; /* Tighter gap for stacking */
-  }
-  
-  /* Ensure all action buttons take up the full width for easy tapping */
-  .case-actions > * {
-    width: 100%;
-    text-align: center;
-    /* Increase padding for a larger tap target */
-    padding: 1rem 1.2rem;
-  }
-
-  /* Adjust Kanban board properties for better fit */
-  .kanban-board {
-    padding: 0.8rem; /* Slightly reduced padding */
-    height: auto; /* Allow content to dictate height */
-    max-height: 80vh; /* Set a maximum height to keep it scrollable */
-  }
-
-  /* Make the empty state fill the smaller viewport better */
-  .kanban-board.empty-state {
-    width: 100%;
-    padding: 2rem 1rem;
-  }
-  
-  /* Reduce heading size slightly for smaller screens */
-  .kanban-board h3 {
-    font-size: 1.5rem;
-    padding-bottom: 0.6rem;
-    margin-bottom: 0.8rem;
-  }
-
-  /* Ensure the summary container has a bit more breathing room */
-  .report-summary {
-    padding: 1.2rem;
-  }
-}
+            .case-actions > * {
+                width: 100%;
+                padding: 1rem 1.2rem;
+            }
+        }

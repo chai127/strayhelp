@@ -3,9 +3,9 @@
 /* ================================================= */
 :root {
     /* Define Severity Colors */
-    --severity-high: #f33f4e;       /* True Coral/Pink */
-    --severity-medium: #ffaf38;     /* Soft Gold/Peach */
-    --severity-low: #fdcc2b;        /* Soft Mint Green */      /* Defined background light for hover */
+   --severity-high: #f33f4e;       
+    --severity-medium: #ffaf38;     
+    --severity-low: #fdcc2b;     /* Defined background light for hover */
 
     /* Basic UI Colors (pastel orange focus) */
     --text-dark: #333;
@@ -140,16 +140,16 @@
 
 /* Severity Tag Background Colors (Using light backgrounds with strong text color for better contrast) */
 .severity-high .severity-tag {
-    background-color: rgba(243, 63, 78, 0.15); 
-    color: var(--severity-high); 
+     background-color: var(--severity-high);
+ color: rgb(83, 78, 78);
 }
 .severity-medium .severity-tag {
-    background-color: rgba(255, 175, 56, 0.2);
-    color: var(--severity-medium);
+    background-color: var(--severity-medium);
+ color: rgb(83, 78, 78);
 }
 .severity-low .severity-tag {
-    background-color: rgba(253, 204, 43, 0.25);
-    color: #cc9900; /* Darker text for readability on the yellow background */
+    background-color:var(--severity-low);
+ color: rgb(83, 78, 78);
 }
 
 /* ########################################## */

@@ -1,207 +1,174 @@
 /* ================================================= */
-/* src/styles/Adoption.css (Minimal & Tighter)    */
-/* ================================================= */
+/* Adoption.css — Clean & Responsive                */
+/* ================================================= *
 
-/* -------------------- Container & Headings -------------------- */
+/* -------------------- Layout -------------------- */
 .adoption-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    /* FIX: Reduced vertical padding to 0.8rem (approx 13px) for a tighter fit. */
-    color: var(--text-dark);
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  color: var(--text-dark);
 }
 
 .adoption-container h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 2.5rem;
-    color: var(--primary-orange-dark);
-    border: none;
-    padding: 0;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--primary-orange-dark);
 }
 
 .adoption-container h2 {
-    font-size: 1.4rem;
-    margin-bottom: 1.2rem;
-    color: var(--text-dark);
-    /* KEEP: Clean bottom border as a separator */
-    border-bottom: 1px solid var(--neutral-light);
-    padding-bottom: 0.5rem;
-    border-left: none;
-    border-right: none;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--neutral-light);
+  padding-bottom: 0.5rem;
 }
 
 /* -------------------- Add Animal Form -------------------- */
 .add-animal-form {
-    border: 1px solid var(--neutral-light);
-    padding: 1.5rem;
-    border-radius: 12px;
-    margin-bottom: 3rem; 
+  background: var(--neutral-light);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .add-animal-form form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
 }
 
-.add-animal-form input {
- flex: 1 1 180px;
- padding: 0.8rem 1rem;
- border: 1px solid var(--neutral-light, #dce3e7); 
- border-radius: 8px;
- font-size: 1rem;
- background-color: var(--surface-white, #fff);
- color: var(--text-dark, #333);
+.add-animal-form input[type="text"],
+.add-animal-form input[type="file"] {
+  flex: 1 1 200px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: var(--surface-white);
+  color: var(--text-dark);
 }
 
 .add-animal-form input:focus {
- outline: none;
- border-color: var(--primary-orange, #ff7f4d);
- box-shadow: 0 0 0 2px rgba(248, 151, 32, 0.2);
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 0 2px rgba(255, 127, 77, 0.2);
+  outline: none;
 }
 
 .add-animal-form button {
-    flex: 1 1 100%;
-    max-width: 200px;
-    align-self: flex-start;
-    background-color: var(--primary-orange);
-    color: white;
-    font-weight: 600;
-    border: none;
-    border-radius: 30px;
-    padding: 0.8rem 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+  padding: 0.75rem 1.2rem;
+  border-radius: 30px;
+  background: var(--primary-orange);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .add-animal-form button:hover {
-    background-color: var(--primary-orange-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: var(--primary-orange-dark);
+  transform: translateY(-2px);
 }
 
-
-/* -------------------- Animal List & Card -------------------- */
+/* -------------------- Animal List -------------------- */
 .animal-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
-    gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
 .animal-card {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-
-    background-color: var(--surface-white);
-    border: 1px solid var(--neutral-light);
-    border-radius: 12px;
-    padding: 1rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  background: var(--surface-white);
+  border: 1px solid var(--neutral-light);
+  border-radius: 12px;
+  padding: 1rem;
+  gap: 1rem;
+  transition: 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
 .animal-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
 }
 
 .animal-card img {
-    width: 100px; 
-    height: 100px;
-    object-fit: cover;
-    border-radius: 8px;
-    flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
 }
 
 .animal-card-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .animal-card strong {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text-dark);
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 .animal-card p {
-    font-size: 0.95rem;
-    color: var(--text-light);
+  font-size: 0.95rem;
+  color: var(--text-light);
 }
 
+/* -------------------- Empty State -------------------- */
 .empty-state {
-    text-align: center;
-    font-style: italic;
-    color: var(--text-light);
-    border: 1px dashed var(--neutral-light);
-    border-radius: 8px;
-}
-
-
-.add-animal-form input {
-  /* DESKTOP/DEFAULT STYLES */
-  flex: 1 1 180px;
-  padding: 0.8rem 1rem;
-  /* FIX: Ensure a visible border in the normal state */
-  border: 1px solid var(--neutral-light, #dce3e7); 
+  text-align: center;
+  font-style: italic;
+  color: var(--text-light);
+  padding: 1rem;
+  border: 1px dashed var(--neutral-light);
   border-radius: 8px;
-  font-size: 1rem;
-  background-color: var(--surface-white, #fff);
-  color: var(--text-dark, #333);
 }
 
-.add-animal-form input:focus {
-  outline: none;
-  /* FIX: Change border color on focus */
-  border-color: var(--primary-orange, #ff7f4d);
-  /* Enhance visibility with a subtle shadow */
-  box-shadow: 0 0 0 2px rgba(248, 151, 32, 0.2);
-}
 /* -------------------- Responsive -------------------- */
 @media (max-width: 768px) {
-    /* Form Fixes */
   .add-animal-form form {
     flex-direction: column;
-    /* FIX: Center the stacked content within the form */
     align-items: center;
+    gap: 0.75rem;
   }
 
-  .add-animal-form input {
-    /* FIX: Prevent inputs from taking 100% width. Constrain to 90% or a fixed max. */
-        width: 90%; 
-        max-width: 400px; /* Optional: Sets an absolute max size for consistency */
-    flex: 0 0 auto; /* Override flex: 1 1 180px */
+  .add-animal-form input,
+  .add-animal-form button {
+    width: 100%;
+    max-width: 320px;
+    max-height: 50px;
+    font-size: 0.9rem;
+    padding: 0.6rem 0.9rem;
+  }
+
+  .add-animal-form input[type="file"] {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.9rem;
   }
 
   .add-animal-form button {
-    /* Keep the button centered and constrained */
-    max-width: 400px; /* Match input max-width */
-        width: 90%;
-        align-self: center; /* Ensures button aligns with constrained inputs */
-  }
-
-    /* Other Mobile Styles */
-  .adoption-container h1 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .animal-list {
-    grid-template-columns: 1fr;
+    padding: 0.6rem 1rem;
+    border-radius: 24px;
   }
 
   .animal-card {
-    flex-direction: row; 
+    flex-direction: row;
     padding: 0.8rem;
   }
 
   .animal-card img {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
+  }
+
+  .adoption-container h1 {
+    font-size: 2rem;
   }
 }

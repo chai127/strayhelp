@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// Assuming dogImage and catImage paths are correct
 import dogImage from "../../assets/dog.jpeg";
 import catImage from "../../assets/cat.jpeg";
 import "../../styles/Adoption.css";
@@ -20,78 +19,74 @@ function Adoption() {
 
   const handleAddAnimal = (e) => {
     e.preventDefault();
+    if (!newAnimal.trim() || !newBreed.trim() || !newImageFile) return;
 
-    if (newAnimal.trim() && newBreed.trim() && newImageFile) {
-      const imageUrl = URL.createObjectURL(newImageFile);
+    const imageUrl = URL.createObjectURL(newImageFile);
 
-      setAnimals([
-        ...animals,
-        {
-          name: newAnimal,
-          breed: newBreed,
-          image: imageUrl,
-        },
-      ]);
+    setAnimals([
+      ...animals,
+      {
+        name: newAnimal.trim(),
+        breed: newBreed.trim(),
+        image: imageUrl,
+      },
+    ]);
 
-      // Reset form
-      setNewAnimal("");
-      setNewBreed("");
-      setNewImageFile(null);
-      e.target.reset(); 
-    }
+    // Reset form inputs
+    setNewAnimal("");
+    setNewBreed("");
+    setNewImageFile(null);
+    e.target.reset();
   };
 
   return (
-    <section id="adoption">
-      <div className="adoption-container">
-        <h1>Animal Adoption</h1>
+    <section className="adoption-container">
+      <h1>Adopt a Friend</h1>
 
-        {/* Add Animal Form */}
-        <div className="add-animal-form">
-          <form onSubmit={handleAddAnimal}>
-            <input
-              type="text"
-              value={newAnimal}
-              onChange={(e) => setNewAnimal(e.target.value)}
-              placeholder="Enter animal name"
-              required
-            />
-            <input
-              type="text"
-              value={newBreed}
-              onChange={(e) => setNewBreed(e.target.value)}
-              placeholder="Enter animal breed"
-              required
-            />
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageUpload}
-              required
-            />
-            <button type="submit">Add Animal</button>
-          </form>
-        </div>
+      {/* Add New Animal */}
+      <div className="add-animal-form">
+        <form onSubmit={handleAddAnimal}>
+          <input
+            type="text"
+            value={newAnimal}
+            onChange={(e) => setNewAnimal(e.target.value)}
+            placeholder="Animal Name"
+            required
+          />
+          <input
+            type="text"
+            value={newBreed}
+            onChange={(e) => setNewBreed(e.target.value)}
+            placeholder="Breed"
+            required
+          />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            required
+          />
+          <button type="submit">Add Animal</button>
+        </form>
+      </div>
 
-        {/* Available Animals List */}
-        <div className="adoption-list-section">
-          <h2>Available Animals for Adoption</h2>
-          {animals.length === 0 ? (
-            <p className="empty-state">No animals available for adoption yet. Add some!</p>
-          ) : (
-            <div className="animal-list">
-              {animals.map((animal, index) => (
-                <div className="animal-card" key={index}>
-                  <img src={animal.image} alt={animal.name} />
-                  <div className="animal-card-content">
-                    <strong>{animal.name}</strong>
-                    <p>{animal.breed}</p>
-                  </div>
+      {/* Available Animals */}
+      <div className="adoption-list-section">
+        {animals.length === 0 ? (
+          <p className="empty-state">No animals yet. Add some!</p>
+        ) : (
+          <div className="animal-list">
+            {animals.map((animal, index) => (
+              <div className="animal-card" key={index}>
+                <img src={animal.image} alt={animal.name} />
+                <div className="animal-card-content">
+                  <strong>{animal.name}</strong>
+                  <p>{animal.breed}</p>
                 </div>
-              ))}
-            </div>
-          )}
-        </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
