@@ -42,13 +42,14 @@ function Header({ setPage, userRole, setUserRole }) {
         </button>
         <button className="hd-btn hd-primary">My Account</button>
         <button
-          className="hd-btn hd-secondary"
+          className="hd-btn hd-primary"
           onClick={() => {
             setUserRole(null);
             setPage("main");
           }}
         >
-          Logout <IconLogout />
+          Logout 
+          {/* <IconLogout /> */}
         </button>
       </div>
          </div>
