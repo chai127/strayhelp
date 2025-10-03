@@ -42,6 +42,9 @@ const NGONavbar = ({ user, setPage,setUserRole }) => {
           <li>
             <button onClick={() => scrollToSection("volunteers-panel")}>Volunteers</button>
           </li>
+          <li>
+            <button onClick={() => scrollToSection("adoption")}>Adoption</button>
+          </li>
 
           {/* User Menu */}
           <div className="auth">

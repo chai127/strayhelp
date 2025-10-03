@@ -7,8 +7,6 @@
  --severity-medium: #ffaf38ab; /* Soft Gold/Peach for Medium */
  --severity-low: #fdcc2bac;  /* Soft Mint Green for Low */
  
- /* Hover Color (Very Light Blue) */
- --hover-blue: #e6c78b54;
 }
 
 
@@ -50,7 +48,7 @@
 }
 
 .queue-item:hover {
- background-color: var(--hover-blue);
+ background-color: var(--bg-light);
  transform: translateY(-2px);
  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

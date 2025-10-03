@@ -1,0 +1,221 @@
+/* Container */
+.adoption-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  color: var(--text-dark);
+}
+
+/* Headings */
+.adoption-container h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary-orange-dark);
+}
+
+.adoption-container h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--accent-green);
+}
+
+/* Animal List */
+.animal-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.animal-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+
+  background-color: var(--surface-white);
+  border: 1px solid var(--neutral-light);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+  height: auto;
+  width: 100%;
+}
+
+.animal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.animal-card img {
+  width: 180px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.animal-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+.animal-card strong {
+  font-size: 1.2rem;
+  color: var(--text-dark);
+}
+
+.animal-card p {
+  font-size: 1rem;
+  color: var(--text-light);
+}
+
+/* Form */
+.add-animal-form {
+  background-color: var(--bg-light);
+  border: 1px solid var(--neutral-light);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.add-animal-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.add-animal-form input {
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--neutral-light);
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: var(--surface-white);
+  color: var(--text-dark);
+}
+
+.add-animal-form input:focus {
+  outline: none;
+  border-color: var(--accent-green);
+  box-shadow: 0 0 0 2px rgba(169, 214, 187, 0.4);
+}
+
+/* Button */
+.add-animal-form button {
+  background-color: var(--primary-orange);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  padding: 0.8rem 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-animal-form button:hover {
+  background-color: var(--primary-orange-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  font-style: italic;
+  color: var(--text-light);
+}
+
+/* Responsive: Mobile */
+@media (max-width: 768px) {
+  .animal-list {
+    grid-template-columns: 1fr;
+  }
+
+  .animal-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .animal-card img {
+    width: 100%;
+    max-width: 300px;
+    height: 180px;
+  }
+
+  .animal-card-content {
+    align-items: center;
+  }
+
+  .add-animal-form {
+    padding: 1rem;
+  }
+
+  .animal-card strong {
+    font-size: 1.1rem;
+  }
+
+  .animal-card p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Large screens: Wider layout and spacing */
+@media (min-width: 1024px) {
+  .adoption-container {
+    max-width: 1200px;
+    padding: 3rem 2rem;
+  }
+
+  .animal-list {
+    grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+    gap: 2rem;
+  }
+
+  .animal-card {
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .animal-card img {
+    width: 240px;
+    height: 160px;
+    border-radius: 12px;
+  }
+
+  .animal-card strong {
+    font-size: 1.4rem;
+  }
+
+  .animal-card p {
+    font-size: 1.1rem;
+  }
+
+  .add-animal-form {
+    padding: 2rem;
+  }
+
+  .add-animal-form input {
+    font-size: 1.1rem;
+    padding: 1rem;
+  }
+
+  .add-animal-form button {
+    font-size: 1.05rem;
+    padding: 1rem 1.6rem;
+  }
+
+  .adoption-container h1 {
+    font-size: 2.8rem;
+  }
+
+  .adoption-container h2 {
+    font-size: 2rem;
+  }
+}

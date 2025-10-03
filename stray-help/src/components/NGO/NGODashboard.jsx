@@ -7,6 +7,7 @@ import KanbanBoard from "./KanbanBoard";
 import NGONavbar from "./NGONavbar";
 import Volunteers from "./Volunteers";
 import LiveMap from "./LiveMap"; 
+import Adoption from "./Adoption";
 
 const mockUser = {
     username: "ngo_admin",
@@ -38,6 +39,11 @@ const NGODashboard = ({ setPage, user = mockUser, setUserRole }) => {
                             <LiveMap /> 
                         </div>
                     </div>
+                    <div className="dashboard-panels">
+                            <div className="adoption-container">
+                                <Adoption/>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>

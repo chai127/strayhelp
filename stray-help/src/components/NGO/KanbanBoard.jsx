@@ -5,7 +5,7 @@ const KanbanBoard = ({ selectedCase }) => {
   if (!selectedCase) {
     return (
       <div className="kanban-board empty-state">
-        <p>Select a case from the Triage Queue to view details and start rescue.</p>
+        <p>Select a case from the Incoming Reports to view details and start rescue.</p>
         <p>Case details, AI assessment, and actions will appear here.</p>
       </div>
     );
